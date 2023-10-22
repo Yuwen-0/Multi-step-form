@@ -1,4 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+
 *{
+  font-family: 'Ubuntu', sans-serif;
+  box-sizing: border-box;
+  font-weight: 400;
   padding: 0;
   margin: 0;
+}
+
+body{
+  background-color: #f3f3f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+.Form-container{
+  display: flex;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px -2px gray;
+  background: white;
+  width:900px;
+  height: 580px;
+}
+
+.Form-Steps{
+  margin-left: 5px;
+  border-radius: 10px;
+  width: 30%;
+  height: 100%;
+  background:no-repeat url("../assets/images/bg-sidebar-desktop.svg") center; 
+  color: white;
+}
+
+.Form-Step{
+  display: flex;
+  padding: 2rem 2rem 20px 2rem ;  
+  gap: 10px;
+  align-items: center;
+}
+
+
+.Form-Step-Number{
+  display: flex;
+  padding: 0 0 0 6.2%;
+  align-items: center;
+  border-radius: 100%;
+  border: 1px solid white;
+  font-size: 17px;
+  width: 35px;
+  height: 35px;
+}
+
+.Form-Step-Titles{
+  display: flex;
+  flex-direction: column;
+}
+
+.Form-Step-Title{
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.Form-Step-Subtitle{
+  color: hsl(229, 24%, 87%);
+}
+
+.Form-Content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+}
+
+.Form-Content > div {
+  width: 70%;
+  height: 90%;
 }
