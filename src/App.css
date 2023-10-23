@@ -37,15 +37,19 @@ body{
 
 .Form-Step{
   display: flex;
-  padding: 2rem 2rem 20px 2rem ;  
-  gap: 10px;
+  padding: 1.5rem;  
+  gap: 20px;
   align-items: center;
+}
+
+.Form-Step:nth-child(1){
+  padding-top: 40px;
 }
 
 
 .Form-Step-Number{
   display: flex;
-  padding: 0 0 0 6.2%;
+  padding: 0 0 0 5.7%;
   align-items: center;
   border-radius: 100%;
   border: 1px solid white;
@@ -62,9 +66,11 @@ body{
 .Form-Step-Title{
   font-size: 15px;
   font-weight: 700;
+  color:  hsl(217, 100%, 97%);
 }
 
 .Form-Step-Subtitle{
+  font-size: 13px;
   color: hsl(229, 24%, 87%);
 }
 
@@ -76,6 +82,18 @@ body{
 }
 
 .Form-Content > div {
-  width: 70%;
+  width: 68%;
   height: 90%;
+}
+
+.Form-Content-Title{
+  color: hsl(213, 96%, 18%);
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.Form-Content-Description{
+  margin-top: 10px;
+  color: hsl(231, 11%, 63%);
+  font-size: 15px;
 }

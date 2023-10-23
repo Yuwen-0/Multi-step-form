@@ -18,8 +18,8 @@ const Steps = ["YOUR INFO","SELECT PLAN","ADD-ONS","SUMMARY"]
 
         <section className='Form-Content'>
           <div>
-            <h1 className='Form-Content-Title'>YOUR INFO</h1>
-            <p className='Form-Content-Description'>Please provide your personal information</p>
+            <h1 className='Form-Content-Title'>Personal info</h1>
+            <p className='Form-Content-Description'>Please provide your name , email address and phone number.</p>
           </div>
         </section>
       </div>
