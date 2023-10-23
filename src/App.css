@@ -18,6 +18,7 @@ body{
 }
 
 .Form-container{
+  padding: 10px;
   display: flex;
   border-radius: 10px;
   box-shadow: 0 4px 8px -2px gray;
@@ -27,8 +28,8 @@ body{
 }
 
 .Form-Steps{
-  margin-left: 5px;
   border-radius: 10px;
+  padding-left: 10px;
   width: 30%;
   height: 100%;
   background:no-repeat url("../assets/images/bg-sidebar-desktop.svg") center; 
@@ -37,8 +38,8 @@ body{
 
 .Form-Step{
   display: flex;
-  padding: 1.5rem;  
-  gap: 20px;
+  padding: 1rem 0 1rem 1.5rem;  
+  gap: 15px;
   align-items: center;
 }
 
@@ -49,11 +50,12 @@ body{
 
 .Form-Step-Number{
   display: flex;
-  padding: 0 0 0 5.7%;
+  padding: 0 0 0 4.9%;
   align-items: center;
   border-radius: 100%;
   border: 1px solid white;
   font-size: 17px;
+  font-weight: 700;
   width: 35px;
   height: 35px;
 }
@@ -66,9 +68,9 @@ body{
 .Form-Step-Title{
   font-size: 15px;
   font-weight: 700;
-  color:  hsl(217, 100%, 97%);
+  color:  hsl(232, 68%, 85%);
 }
-
+  
 .Form-Step-Subtitle{
   font-size: 13px;
   color: hsl(229, 24%, 87%);
@@ -76,14 +78,18 @@ body{
 
 .Form-Content{
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   width: 70%;
 }
 
 .Form-Content > div {
   width: 68%;
-  height: 90%;
+  height: fit-content
+}
+
+.Form-Content{
+  margin-top: 30px;
 }
 
 .Form-Content-Title{
@@ -97,3 +103,73 @@ body{
   color: hsl(231, 11%, 63%);
   font-size: 15px;
 }
+
+.Form-Content-Inputs{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.Form-Content-Inputs > label{
+  color: hsl(213, 96%, 18%);
+  font-size: 15px;
+  margin-top: 15px;
+}
+
+.Form-Content-Inputs > input{
+  padding: 14px;
+  border-radius: 7px;
+  border: 1px solid hsl(231, 11%, 63%);
+}
+
+.Form-Content-Inputs > input::placeholder{
+  color: hsl(231, 11%, 63%);
+}
+
+.Form-Content-Inputs > input:focus{
+
+  outline: none;
+  border: 1px solid hsl(243, 100%, 62%);
+}
+
+.Form-Button{
+  text-align: center;
+  position: absolute;
+  width: 100px;
+  height: 40px;
+  right: 0;
+  bottom: 0;
+  border-radius: 5px;
+  border: none;
+  background-color: hsl(213, 96%, 18%);
+  color: white;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.Form-Button:hover{
+  background-color: hsl(213, 71%, 30%);
+}
+
+.Form-Button:active{
+  transform: scale(0.80);
+}
+
+.Form-Button-Container{
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  align-items: center;
+  height: 27%;
+  width: 68%;
+}
+
+.Active{
+  background-color: hsl(228, 100%, 84%);
+  border-color: hsl(228, 100%, 84%);
+  color: hsl(213, 96%, 18%) ;
+}
+
+
