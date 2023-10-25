@@ -105,6 +105,7 @@ body{
 }
 
 .Form-Content-Inputs{
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -112,24 +113,25 @@ body{
   margin-top: 30px;
 }
 
-.Form-Content-Inputs > label{
+.Input-labels{
   color: hsl(213, 96%, 18%);
+  display: block;
   font-size: 15px;
   margin-top: 15px;
 }
 
-.Form-Content-Inputs > input{
+.Content-Inputs{
   padding: 14px;
   border-radius: 7px;
   border: 1px solid hsl(231, 11%, 63%);
+  width: 100%;
 }
 
-.Form-Content-Inputs > input::placeholder{
+.Content-Inputs::placeholder{
   color: hsl(231, 11%, 63%);
 }
 
-.Form-Content-Inputs > input:focus{
-
+.Content-Inputs :focus{
   outline: none;
   border: 1px solid hsl(243, 100%, 62%);
 }
@@ -252,6 +254,21 @@ body{
   border-radius: 10px;
   background-color: white;
   height: 19px;
+}
+
+.MoveCircle{
+  transform:translateX(27px);
+}
+
+.Error{
+  color: red;
+  position: absolute;
+  tıp: 0;
+  font-size: 13px;
+}
+
+.Input{
+  position: relative;
 }
 
 
