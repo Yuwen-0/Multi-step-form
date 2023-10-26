@@ -4,76 +4,80 @@ import './App.css'
 import Content from './components/Content';
 import Step from './components/Step';
 function App() {
-const [Steps, setSteps] = useState(
-  [
+  const [stepStage, setStepStage] = useState(1);
+  const [stepsInfo, setStepsInfo] = useState([
     {
       title: 'YOUR INFO',
       number: 1,
-      isActive: true
+      isActive: stepStage === 1,
+      info: {
+        name: '',
+        email: '',
+        phone: ''
+      }
     },
     {
       title: 'SELECT PLAN',
       number: 2,
-      isActive: false
+      isActive: stepStage === 2,
+      info: {
+        plan: '',
+        yearly: false
+      },
     },
     {
       title: 'ADD-ONS',
       number: 3,
-      isActive: false
+      isActive: stepStage === 3
     },
     {
       title: 'SUMMARY',
       number: 4,
-      isActive: false
+      isActive: stepStage === 4
     }
-  ]
-);
+  ]);
 
-const [allPlans, setPlans] = useState([
-  {
-    planName: 'Arcade',
-    monthlyPrice: 9,
-    imgSrc: 'assets/images/icon-arcade.svg'
-  },
-  {
-    planName: 'Advanced',
-    monthlyPrice: 12,
-    imgSrc: 'assets/images/icon-advanced.svg'
-  },
-  {
-    planName: 'Pro',
-    monthlyPrice: 15,
-    imgSrc: 'assets/images/icon-pro.svg'
+  const [allPlans, setAllPlans] = useState([
+    {
+      planName: 'Arcade',
+      monthlyPrice: 9,
+      imgSrc: 'assets/images/icon-arcade.svg'
+    },
+    {
+      planName: 'Advanced',
+      monthlyPrice: 12,
+      imgSrc: 'assets/images/icon-advanced.svg'
+    },
+    {
+      planName: 'Pro',
+      monthlyPrice: 15,
+      imgSrc: 'assets/images/icon-pro.svg'
+    }
+  ]);
+
+  const IncreeseSteps = () => {
+    setStepStage(stepStage + 1);
   }
-])
-
 
   return (
-    <>    
+    <>
       <div className='Form-container'>
         <section className='Form-Steps'>
-
-          {Steps.map((step, index) => {
-            return <Step key={index} title={step.title} isActive={step.isActive} number={index + 1} />
-          })}
-
+          {stepsInfo.map((step, index) => (
+            <Step key={index} title={step.title} isActive={step.isActive} number={index + 1} />
+          ))}
         </section>
 
         <section className='Form-Content'>
           <div>
             <h1 className='Form-Content-Title'>Personal info</h1>
-            <p className='Form-Content-Description'>Please provide your name , email address and phone number.</p>
+            <p className='Form-Content-Description'>Please provide your name, email address, and phone number.</p>
           </div>
-            <Content Step={1} allPlans={allPlans}/>
-          <section className='Form-Button-Container'>
-            <button className='Form-Button'>Next Step</button>
-          </section>
+          <Content stepsInfo={stepsInfo} increaseSteps={IncreeseSteps} setStepsInfo={setStepsInfo} step={stepStage} allPlans={allPlans} />
         </section>
-
       </div>
-
     </>
-  )
+  );
 }
 
 export default App
