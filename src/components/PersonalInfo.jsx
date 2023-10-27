@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
 
 export function PersonalInfo({increaseSteps, setStepsInfo,stepsInfo }) {
   const [formData, setFormData] = useState({
@@ -21,6 +21,7 @@ export function PersonalInfo({increaseSteps, setStepsInfo,stepsInfo }) {
     phone: "",
   });
 
+
   useEffect(() => {
     console.log(formData);
   })
@@ -33,6 +34,7 @@ export function PersonalInfo({increaseSteps, setStepsInfo,stepsInfo }) {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    const urlProperties = new URLSearchParams(window.location.search);
     const error = {};
 
     if (name === "name" && !nameRegex.test(value)) {
@@ -53,47 +55,44 @@ export function PersonalInfo({increaseSteps, setStepsInfo,stepsInfo }) {
         valid: !error[name],
       },
     })
-
-    
-    
   };
 
   const setInfo = () => {
     const { name, email, phone } = formData;
+    const errors = {};
   
     if (name.valid && email.valid && phone.valid) {
-      // Find the index of the step to update
-      const indexToUpdate = stepsInfo.findIndex((step) => step.title === "YOUR INFO");
+      // Your existing code for updating stepsInfo when the data is valid
+      // ...
   
-      if (indexToUpdate !== -1) {
-        // Update the step with new information
-        const updatedStep = {
-          ...stepsInfo[indexToUpdate],
-          info: {
-            name: name.value,
-            email: email.value,
-            phone: phone.value,
-          },
-        };
-  
-        // Update the stepsInfo array
-        setStepsInfo((prevStepsInfo) => {
-          const updatedSteps = [...prevStepsInfo];
-          updatedSteps[indexToUpdate] = updatedStep;
-  
-          // Set the next step as active if not the last step (max 4 steps)
-          if (indexToUpdate < 3) {
-            updatedSteps[indexToUpdate + 1].isActive = true;
-            updatedSteps[indexToUpdate].isActive = false;
-          }
-  
-          return updatedSteps;
-        });
-  
-        increaseSteps();
+      increaseSteps();
+    } else {
+      // Set individual error messages for each field
+      if (!name.valid) {
+        errors.name = "Please enter a valid name";
       }
+      if (!email.valid) {
+        errors.email = "Please enter a valid email";
+      }
+      if (!phone.valid) {
+        errors.phone = "Please enter a valid phone number";
+      }
+  
+      setFormError(errors);
+  
+      // Add the "Invalid" class to the input fields with errors
+      const inputs = document.querySelectorAll(".Content-Inputs");
+      inputs.forEach((input) => {
+        const name = input.getAttribute("name");
+        if (errors[name]) {
+          input.classList.add("Invalid");
+        } else {
+          input.classList.remove("Invalid");
+        }
+      });
     }
-  };
+  }
+  
   
   
 
@@ -105,7 +104,7 @@ export function PersonalInfo({increaseSteps, setStepsInfo,stepsInfo }) {
         </label>
         {formError.name && <span className="Error">{formError.name}</span>}
         <input
-          className="Content-Inputs"
+          className={formError.name ? "Content-Inputs Invalid" : "Content-Inputs"}  
           onChange={handleInputChange}
           type="text"
           placeholder="e.g. Stephen King"
@@ -119,7 +118,7 @@ export function PersonalInfo({increaseSteps, setStepsInfo,stepsInfo }) {
           {formError.email && <span className="Error">{formError.email}</span>}
         </label>
         <input
-          className="Content-Inputs"
+          className={formError.email ? "Content-Inputs Invalid" : "Content-Inputs"}
           onChange={handleInputChange}
           type="email"
           placeholder="e.g. 8y8YU@example.com"
@@ -134,7 +133,7 @@ export function PersonalInfo({increaseSteps, setStepsInfo,stepsInfo }) {
         </label>
         {formError.phone && <span className="Error">{formError.phone}</span>}
         <input
-          className="Content-Inputs"
+          className={formError.phone ? "Content-Inputs Invalid" : "Content-Inputs"}
           onChange={handleInputChange}
           value={formData.phone.value}
           type="tel"
