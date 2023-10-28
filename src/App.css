@@ -8,8 +8,25 @@
   margin: 0;
 }
 
+:root{
+  --color-beige:#f3f3f3;
+  --color-white: hsl(0, 0%, 100%);
+  --color-darkGray: hsl(0, 0%, 29%);
+  --color-marnieBlue: hsl(213, 96%, 18%);
+  --color-purplishBlue: hsl(243, 100%, 62%);
+  --color-pastelBlue: hsl(228, 100%, 84%);
+  --color-lightBlue: hsl(206, 94%, 87%);
+  --color-strawberryRed: hsl(354, 84%, 57%);
+
+  --color-coolGray: hsl(231, 11%, 63%);
+  --color-lightGray: hsl(229, 24%, 87%);
+  --color-magnolia: hsl(217, 100%, 97%);
+  --color-alabaster: hsl(231, 100%, 99%);
+
+}
+
 body{
-  background-color: #f3f3f3;
+  background-color:var(--color-beige) ;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,7 +38,7 @@ body{
   padding: 10px;
   display: flex;
   border-radius: 10px;
-  box-shadow: 0 4px 8px -2px gray;
+  box-shadow: 0 4px 8px -2px var(--color-darkGray);
   background: white;
   width:900px;
   height: 580px;
@@ -50,10 +67,10 @@ body{
 
 .Form-Step-Number{
   display: flex;
-  padding: 0 0 0 4.9%;
+  justify-content: center;
   align-items: center;
   border-radius: 100%;
-  border: 1px solid white;
+  border: 1px solid var(--color-white);
   font-size: 17px;
   font-weight: 700;
   width: 35px;
@@ -104,6 +121,7 @@ body{
 }
 
 .Form-Content-Inputs{
+  margin-top: 20px;
   display: flex;
   gap: 15px;
   flex-direction: column;
@@ -116,17 +134,18 @@ body{
 }
 
 .Input-labels{
-  color: hsl(213, 96%, 18%);
+  color: hsl(213, 71%, 28%);
   display: block;
-  font-size: 20px;
+  font-size: 15px;
   margin-top: 15px;
+  margin-bottom: 5px;
 }
 
 .Content-Inputs {
-  padding: 14px;
+  padding: 10px;
   border-radius: 7px;
   border: 1px solid hsl(231, 11%, 63%);
-  height: 55px;
+  height:50px;
   width: 100%;
   font-size: 15px;
 }
@@ -141,7 +160,7 @@ body{
 
 .Form-Button {
   width: 110px;
-  height: 45px;
+  height: 50px;
   border-radius: 5px;
   border: none;
   background-color: hsl(213, 96%, 18%);
@@ -150,11 +169,16 @@ body{
   transition: all 0.1s;
   font-size: 15px;
   font-weight: 700;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-block: 17%;
   margin-left: auto; /* Align to the right */
+}
+
+.Form-Button.Personal-Info{
+  margin-top: 74px;
+  width: 100%;
+  height: 50px;
 }
 
 .Form-Button:hover{
@@ -288,6 +312,26 @@ body{
 
 .Input{
   position: relative;
+}
+
+.Form-Back-Button{
+  left: 15px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 40px;
+  color: var(--color-marnieBlue);
+  font-weight: 700;
+  font-size: 16px;
+  border: none;
+  background-color: white;
+}
+
+.Plan-Buttons{
+  margin-top: 15%;
+  display: flex;
 }
 
 

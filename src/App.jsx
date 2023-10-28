@@ -11,9 +11,18 @@ function App() {
       number: 1,
       isActive: stepStage === 1,
       info: {
-        name: '',
-        email: '',
-        phone: ''
+        name: {
+          value: '',
+          valid: false
+        },
+        email: {
+          value: '',
+          valid: false
+        },
+        phone: {
+          value: '',
+          valid: false
+        }
       }
     },
     {
@@ -55,17 +64,31 @@ function App() {
     }
   ]);
 
-  const IncreeseSteps = () => {
-    setStepStage(stepStage + 1);
+  const steps = stepsInfo.map((step, index) => (
+    <Step key={index} title={step.title} isActive={step.isActive} number={index + 1} />
+  ))
+
+  const increaseSteps = () => {
+    setStepStage(prevStage => {
+      if (prevStage < 4) {
+        return prevStage + 1;
+      }
+    });
+  }
+
+  const decreaseSteps = () => {
+    setStepStage(prevStage => {
+      if (prevStage > 1) {
+        return prevStage - 1;
+      }
+    })
   }
 
   return (
     <>
       <div className='Form-container'>
         <section className='Form-Steps'>
-          {stepsInfo.map((step, index) => (
-            <Step key={index} title={step.title} isActive={step.isActive} number={index + 1} />
-          ))}
+          {steps}
         </section>
 
         <section className='Form-Content'>
@@ -73,7 +96,7 @@ function App() {
             <h1 className='Form-Content-Title'>Personal info</h1>
             <p className='Form-Content-Description'>Please provide your name, email address, and phone number.</p>
           </div>
-          <Content stepsInfo={stepsInfo} increaseSteps={IncreeseSteps} setStepsInfo={setStepsInfo} step={stepStage} allPlans={allPlans} />
+          <Content decreaseSteps={decreaseSteps} stepsInfo={stepsInfo} increaseSteps={increaseSteps} setStepsInfo={setStepsInfo} step={stepStage} allPlans={allPlans} />
         </section>
       </div>
     </>

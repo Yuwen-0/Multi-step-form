@@ -1,18 +1,20 @@
-import { useEffect, useState} from "react";
+import { useState,useEffect } from "react";
+import PropTypes from 'prop-types';
+import useUrlParams from './customHooks/useUrlParams';
 
-export function PersonalInfo({increaseSteps, setStepsInfo,stepsInfo }) {
+export function PersonalInfo({ increaseSteps, setStepsInfo, stepsInfo }) {
   const [formData, setFormData] = useState({
     name: {
-      value: "",
-      valid: false,
+      value: stepsInfo[0].info.name.value,
+      valid: stepsInfo[0].info.name.valid,
     },
     email: {
-      value: "",
-      valid: false,
+      value: stepsInfo[0].info.email.value,
+      valid: stepsInfo[0].info.email.valid,
     },
     phone: {
-      value: "",
-      valid: false,
+      value: stepsInfo[0].info.phone.value,
+      valid: stepsInfo[0].info.phone.valid ,
     },
   });
   const [formError, setFormError] = useState({
@@ -20,21 +22,25 @@ export function PersonalInfo({increaseSteps, setStepsInfo,stepsInfo }) {
     email: "",
     phone: "",
   });
-
+  const urlParams = useUrlParams();
 
   useEffect(() => {
-    console.log(formData);
-  })
+    urlParams.setParam("info", JSON.stringify(formData));
+
+    if (urlParams.getParam("info")) {
+      setFormData(JSON.parse(urlParams.getParam("info")));
+    }
+
+
+  },[])
+
 
   const nameRegex = /^[a-zA-Z\p{L}\s]+$/u;
   const emailRegex = /^(?!\s)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const phoneRegex = /^\+[0-9]{12,12}$/;
 
-
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    const urlProperties = new URLSearchParams(window.location.search);
     const error = {};
 
     if (name === "name" && !nameRegex.test(value)) {
@@ -54,18 +60,48 @@ export function PersonalInfo({increaseSteps, setStepsInfo,stepsInfo }) {
         value: value,
         valid: !error[name],
       },
-    })
+    });
+    urlParams.setParam("info", JSON.stringify(formData));
   };
 
   const setInfo = () => {
     const { name, email, phone } = formData;
     const errors = {};
-  
+
     if (name.valid && email.valid && phone.valid) {
-      // Your existing code for updating stepsInfo when the data is valid
-      // ...
-  
-      increaseSteps();
+      const indexToUpdate = stepsInfo.findIndex((step) => step.title === "YOUR INFO");
+
+      if (indexToUpdate !== -1) {
+        const updatedStep = {
+          ...stepsInfo[indexToUpdate],
+          info: {
+            name: {
+              value: name.value,
+              valid: true
+            },
+            email: {
+              value: email.value,
+              valid: true
+            },
+            phone: {
+              value: phone.value,
+              valid: true
+            },
+          },
+        };
+
+        const updatedSteps = [...stepsInfo];
+        updatedSteps[indexToUpdate] = updatedStep;
+
+        if (indexToUpdate < stepsInfo.length - 1) {
+          updatedSteps[indexToUpdate + 1].isActive = true;
+          updatedSteps[indexToUpdate].isActive = false;
+        }
+
+        setStepsInfo(updatedSteps);
+
+        increaseSteps();
+      }
     } else {
       // Set individual error messages for each field
       if (!name.valid) {
@@ -77,24 +113,21 @@ export function PersonalInfo({increaseSteps, setStepsInfo,stepsInfo }) {
       if (!phone.valid) {
         errors.phone = "Please enter a valid phone number";
       }
-  
+
       setFormError(errors);
-  
+
       // Add the "Invalid" class to the input fields with errors
       const inputs = document.querySelectorAll(".Content-Inputs");
       inputs.forEach((input) => {
-        const name = input.getAttribute("name");
-        if (errors[name]) {
+        const inputName = input.getAttribute("name");
+        if (errors[inputName]) {
           input.classList.add("Invalid");
         } else {
           input.classList.remove("Invalid");
         }
       });
     }
-  }
-  
-  
-  
+  };
 
   return (
     <>
@@ -104,29 +137,28 @@ export function PersonalInfo({increaseSteps, setStepsInfo,stepsInfo }) {
         </label>
         {formError.name && <span className="Error">{formError.name}</span>}
         <input
-          className={formError.name ? "Content-Inputs Invalid" : "Content-Inputs"}  
+          className={formError.name ? "Content-Inputs Invalid" : "Content-Inputs"}
           onChange={handleInputChange}
           type="text"
           placeholder="e.g. Stephen King"
           name="name"
-          value={formData.name.value}
+          value={stepsInfo[0].info.name.value || formData.name.value}
         />
       </div>
       <div className="Input">
         <label className="Input-labels" htmlFor="email">
           Email
-          {formError.email && <span className="Error">{formError.email}</span>}
         </label>
+        {formError.email && <span className="Error">{formError.email}</span>}
         <input
           className={formError.email ? "Content-Inputs Invalid" : "Content-Inputs"}
           onChange={handleInputChange}
           type="email"
           placeholder="e.g. 8y8YU@example.com"
           name="email"
-          value={formData.email.value}
+          value={stepsInfo[0].info.email.value || formData.email.value}
         />
       </div>
-
       <div className="Input">
         <label className="Input-labels" htmlFor="phone">
           Phone Number
@@ -135,15 +167,22 @@ export function PersonalInfo({increaseSteps, setStepsInfo,stepsInfo }) {
         <input
           className={formError.phone ? "Content-Inputs Invalid" : "Content-Inputs"}
           onChange={handleInputChange}
-          value={formData.phone.value}
           type="tel"
           placeholder="e.g. +1 234 567 890"
           name="phone"
+          value={stepsInfo[0].info.phone.value || formData.phone.value}
         />
       </div>
-        <button
-         onClick={setInfo}
-         className='Form-Button'>Next Step</button>
+      <button onClick={setInfo} className="Form-Button Personal-Info">
+        Next Step
+      </button>
     </>
   );
 }
+
+PersonalInfo.propTypes = {
+  increaseSteps: PropTypes.func.isRequired,
+  setStepsInfo: PropTypes.func.isRequired,
+  stepsInfo: PropTypes.array.isRequired,
+}
+

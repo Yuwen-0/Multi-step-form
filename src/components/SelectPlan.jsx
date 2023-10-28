@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react';
 import { Plan } from '/src/components/Plan.jsx';
 
-export function SelectPlan({ plans }) {
+export function SelectPlan({decreaseSteps,increaseSteps ,stepsInfo, setStepsInfo, step, plans }) {
   const [selectedYearly, setSelectedYearly] = useState(false);
   const circleRef = useRef(null);
 
@@ -32,6 +32,10 @@ export function SelectPlan({ plans }) {
             <div ref={circleRef} className="Plan-Radio-Circle"></div>
           </button>
         </div>
+      </div>
+      <div className="Plan-Buttons">
+        <button onClick={decreaseSteps} className="Form-Back-Button">Go Back</button>
+        <button onClick={increaseSteps} className="Form-Button">Next Step</button>
       </div>
     </>
   );
