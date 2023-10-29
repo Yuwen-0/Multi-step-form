@@ -1,8 +1,7 @@
-import { useState,useEffect } from "react";
+import { useState } from "react";
 import PropTypes from 'prop-types';
-import useUrlParams from './customHooks/useUrlParams';
 
-export function PersonalInfo({ increaseSteps, setStepsInfo, stepsInfo }) {
+export default function PersonalInfo({ increaseSteps, setStepsInfo, stepsInfo }) {
   const [formData, setFormData] = useState({
     name: {
       value: stepsInfo[0].info.name.value,
@@ -22,18 +21,6 @@ export function PersonalInfo({ increaseSteps, setStepsInfo, stepsInfo }) {
     email: "",
     phone: "",
   });
-  const urlParams = useUrlParams();
-
-  useEffect(() => {
-    urlParams.setParam("info", JSON.stringify(formData));
-
-    if (urlParams.getParam("info")) {
-      setFormData(JSON.parse(urlParams.getParam("info")));
-    }
-
-
-  },[])
-
 
   const nameRegex = /^[a-zA-Z\p{L}\s]+$/u;
   const emailRegex = /^(?!\s)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -61,7 +48,6 @@ export function PersonalInfo({ increaseSteps, setStepsInfo, stepsInfo }) {
         valid: !error[name],
       },
     });
-    urlParams.setParam("info", JSON.stringify(formData));
   };
 
   const setInfo = () => {

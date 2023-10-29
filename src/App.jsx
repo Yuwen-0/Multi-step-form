@@ -3,8 +3,11 @@ import { useState } from 'react';
 import './App.css'
 import Content from './components/Content';
 import Step from './components/Step';
+
 function App() {
-  const [stepStage, setStepStage] = useState(1);
+
+  const [stepStage, setStepStage] = useState(2);
+
   const [stepsInfo, setStepsInfo] = useState([
     {
       title: 'YOUR INFO',
@@ -50,17 +53,24 @@ function App() {
     {
       planName: 'Arcade',
       monthlyPrice: 9,
-      imgSrc: 'assets/images/icon-arcade.svg'
+      yearlyPrice: 90,
+      imgSrc: 'assets/images/icon-arcade.svg',
+      isSelected: false
+
     },
     {
       planName: 'Advanced',
       monthlyPrice: 12,
-      imgSrc: 'assets/images/icon-advanced.svg'
+      yearlyPrice: 120,
+      imgSrc: 'assets/images/icon-advanced.svg',
+      isSelected: false
     },
     {
       planName: 'Pro',
       monthlyPrice: 15,
-      imgSrc: 'assets/images/icon-pro.svg'
+      yearlyPrice: 150,
+      imgSrc: 'assets/images/icon-pro.svg',
+      isSelected: false
     }
   ]);
 
@@ -69,42 +79,33 @@ function App() {
   ))
 
   const increaseSteps = () => {
-    setStepStage(prevStage => {
-      if (prevStage < 4) {
-        return prevStage + 1;
-      }
-    });
+    setStepStage(prevStage => (prevStage < 4 ? prevStage + 1 : prevStage));
   }
 
   const decreaseSteps = () => {
-    setStepStage(prevStage => {
-      if (prevStage > 1) {
-        return prevStage - 1;
-      }
-    })
+    setStepStage(prevStage => (prevStage > 1 ? prevStage - 1 : prevStage));
   }
 
   return (
     <>
-      <div className='Form-container'>
-        <section className='Form-Steps'>
-          {steps}
-        </section>
+        <div className='Form-container'>
+          <section className='Form-Steps'>
+            {steps}
+          </section>
 
-        <section className='Form-Content'>
-          <div>
-            <h1 className='Form-Content-Title'>Personal info</h1>
-            <p className='Form-Content-Description'>Please provide your name, email address, and phone number.</p>
-          </div>
-          <Content decreaseSteps={decreaseSteps} stepsInfo={stepsInfo} increaseSteps={increaseSteps} setStepsInfo={setStepsInfo} step={stepStage} allPlans={allPlans} />
-        </section>
-      </div>
+          <section className='Form-Content'>
+            <div>
+              <h1 className='Form-Content-Title'>Personal info</h1>
+              <p className='Form-Content-Description'>Please provide your name, email address, and phone number.</p>
+            </div>
+            <Content decreaseSteps={decreaseSteps} stepsInfo={stepsInfo} increaseSteps={increaseSteps} setStepsInfo={setStepsInfo} step={stepStage} allPlans={allPlans} />
+          </section>
+        </div>
     </>
   );
 }
 
 export default App
-
     export function AddOns() {
       return (
         <>
