@@ -1,13 +1,17 @@
 /* eslint-disable no-unused-vars */
 import { useState } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 import './App.css'
 import Content from './components/Content';
 import Step from './components/Step';
 
+import PlansInfo from './Jsons/PlansInfo.json';
+import PersonalInfo from './components/PersonalInfo';
+import SelectPlan from './components/SelectPlan';
+
 function App() {
-
-  const [stepStage, setStepStage] = useState(2);
-
+  const [stepStage, setStepStage] = useState(1);
   const [stepsInfo, setStepsInfo] = useState([
     {
       title: 'YOUR INFO',
@@ -49,63 +53,64 @@ function App() {
     }
   ]);
 
-  const [allPlans, setAllPlans] = useState([
-    {
-      planName: 'Arcade',
-      monthlyPrice: 9,
-      yearlyPrice: 90,
-      imgSrc: 'assets/images/icon-arcade.svg',
-      isSelected: false
-
-    },
-    {
-      planName: 'Advanced',
-      monthlyPrice: 12,
-      yearlyPrice: 120,
-      imgSrc: 'assets/images/icon-advanced.svg',
-      isSelected: false
-    },
-    {
-      planName: 'Pro',
-      monthlyPrice: 15,
-      yearlyPrice: 150,
-      imgSrc: 'assets/images/icon-pro.svg',
-      isSelected: false
-    }
-  ]);
-
   const steps = stepsInfo.map((step, index) => (
     <Step key={index} title={step.title} isActive={step.isActive} number={index + 1} />
-  ))
+  ));
 
   const increaseSteps = () => {
     setStepStage(prevStage => (prevStage < 4 ? prevStage + 1 : prevStage));
-  }
+  };
 
   const decreaseSteps = () => {
     setStepStage(prevStage => (prevStage > 1 ? prevStage - 1 : prevStage));
-  }
+  };
 
   return (
     <>
+      <Router>
         <div className='Form-container'>
           <section className='Form-Steps'>
             {steps}
           </section>
 
           <section className='Form-Content'>
-            <div>
-              <h1 className='Form-Content-Title'>Personal info</h1>
-              <p className='Form-Content-Description'>Please provide your name, email address, and phone number.</p>
-            </div>
-            <Content decreaseSteps={decreaseSteps} stepsInfo={stepsInfo} increaseSteps={increaseSteps} setStepsInfo={setStepsInfo} step={stepStage} allPlans={allPlans} />
+            <Switch>
+              <Route exact  path=''>
+                <Content 
+                  stepsInfo={stepsInfo} 
+                  setStepsInfo={setStepsInfo} 
+                  step={stepStage} 
+                  allPlans={PlansInfo} 
+                  increaseSteps={increaseSteps}
+                />
+              </Route>
+              <Route  path='/personal-info'>
+                <PersonalInfo 
+                  stepsInfo={stepsInfo} 
+                  setStepsInfo={setStepsInfo} 
+                  step={stepStage} 
+                  allPlans={PlansInfo} 
+                  increaseSteps={increaseSteps}
+                />
+              </Route>
+              <Route exact path='select-plan'>
+                <SelectPlan 
+                  stepsInfo={stepsInfo} 
+                  setStepsInfo={setStepsInfo} 
+                  step={stepStage} 
+                  allPlans={PlansInfo} 
+                  decreaseSteps={decreaseSteps}
+                />
+              </Route>
+            </Switch>
           </section>
         </div>
+      </Router>
     </>
   );
 }
 
-export default App
+export default App;
     export function AddOns() {
       return (
         <>

@@ -1,0 +1,24 @@
+[
+    {
+      "planName": "Arcade",
+      "monthlyPrice": 9,
+      "yearlyPrice": 90,
+      "imgSrc": "assets/images/icon-arcade.svg",
+      "isSelected": false
+    },
+    {
+      "planName": "Advanced",
+      "monthlyPrice": 12,
+      "yearlyPrice": 120,
+      "imgSrc": "assets/images/icon-advanced.svg",
+      "isSelected": false
+    },
+    {
+      "planName": "Pro",
+      "monthlyPrice": 15,
+      "yearlyPrice": 150,
+      "imgSrc": "assets/images/icon-pro.svg",
+      "isSelected": false
+    }
+  ]
+  

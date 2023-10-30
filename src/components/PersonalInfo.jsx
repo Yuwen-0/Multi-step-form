@@ -117,6 +117,10 @@ export default function PersonalInfo({ increaseSteps, setStepsInfo, stepsInfo })
 
   return (
     <>
+      <div>
+        <h1 className='Form-Content-Title'>Personal info</h1>
+        <p className='Form-Content-Description'>Please provide your name, email address, and phone number.</p>
+      </div>
       <div className="Input">
         <label className="Input-labels" htmlFor="name">
           Name
@@ -159,9 +163,13 @@ export default function PersonalInfo({ increaseSteps, setStepsInfo, stepsInfo })
           value={stepsInfo[0].info.phone.value || formData.phone.value}
         />
       </div>
-      <button onClick={setInfo} className="Form-Button Personal-Info">
-        Next Step
-      </button>
+      
+        <button onClick={setInfo} className="Form-Button Personal-Info">
+          {FormData.name.valid && FormData.email.valid && FormData.phone.valid ?
+          <a href="./select-plan"></a>
+          : ""}
+          Next Step
+        </button>
     </>
   );
 }
