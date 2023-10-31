@@ -6,7 +6,11 @@ import  Plan  from '/src/components/Plan.jsx';
 export default function SelectPlan({decreaseSteps,increaseSteps ,stepsInfo, setStepsInfo, step, plans }) {
   const [selectedYearly, setSelectedYearly] = useState(stepsInfo[step-1].info.yearly);
   const [selectedPlan, setSelectedPlan] = useState(stepsInfo[step-1].info.plan);
+  const [Error, setError] = useState(false)
   const circleRef = useRef(null);
+
+
+  const formDataDiv = document.querySelector(".Form-Content");
   function transformCircle() {
     const target = circleRef.current;
 
@@ -20,6 +24,7 @@ export default function SelectPlan({decreaseSteps,increaseSteps ,stepsInfo, setS
   }
 
   function SelectPlan(e) {
+    setError(false)
     plans.map((plan) => {
       if (plan.planName === e.target.id) {
         plan.isSelected = true;
@@ -31,20 +36,48 @@ export default function SelectPlan({decreaseSteps,increaseSteps ,stepsInfo, setS
 
   }
 
+  function GoBack() {
+    setTimeout(() => {
+      stepsInfo[0].isActive = true
+      stepsInfo[1].isActive = false
+      decreaseSteps();
+      formDataDiv.classList.remove("FadeOut")
+    }, 600);
+    formDataDiv.classList.add("FadeOut")
+  }
+
   function Submit(){
-    if(selectedPlan == "") return
-    stepsInfo[step-1].info.plan = selectedPlan;
-    stepsInfo[step-1].info.yearly = selectedYearly;
-    increaseSteps();
+    if(selectedPlan == "") {
+      setError(true)
+      return
+    }
+    setTimeout(() => {
+      stepsInfo[step-1].info.plan = selectedPlan;
+      stepsInfo[step-1].info.yearly = selectedYearly;
+      stepsInfo[step-1].isActive = false
+      stepsInfo[step].isActive = true
+      increaseSteps();
+      formDataDiv.classList.remove("FadeOut")
+    }, 600);
+    formDataDiv.classList.add("FadeOut")
   }
 
   return (
     <>
+      <div className="Form-Content-Title-Container">
+        <h1 className="Form-Content-Title">Select your plan</h1>
+        <p className="Form-Content-Subtitle">You have the option of monthly or yearly billing.</p>
+      </div>
       <div className="Plans-Container">
         {plans.map((plan, index) => (
           <Plan isYearly={selectedYearly} key={index} plan={plan} onClick={SelectPlan} />
         ))}
       </div>
+     {
+     Error
+     ?  <p className="Plan-Error">You Have to select one of the plans</p>
+     : null
+    }
       <div className="Plan-Radio">
         <div className="Plan-Radio-Container">
             <p className={`Plan-Radio-Text ${!selectedYearly ? 'Selected' : ''}`}>Monthly</p>
@@ -55,7 +88,7 @@ export default function SelectPlan({decreaseSteps,increaseSteps ,stepsInfo, setS
         </div>
       </div>
       <div className="Plan-Buttons">
-        <button onClick={decreaseSteps} className="Form-Back-Button">Go Back</button>
+        <button onClick={GoBack} className="Form-Back-Button">Go Back</button>
         <button onClick={Submit} className="Form-Button">Next Step</button>
       </div>
     </>

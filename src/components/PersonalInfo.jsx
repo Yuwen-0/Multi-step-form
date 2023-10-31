@@ -1,19 +1,19 @@
 import { useState } from "react";
 import PropTypes from 'prop-types';
 
-export default function PersonalInfo({ increaseSteps, setStepsInfo, stepsInfo }) {
+export default function PersonalInfo({ increaseSteps, setStepsInfo, stepsInfo,stepNumb }) {
   const [formData, setFormData] = useState({
     name: {
-      value: stepsInfo[0].info.name.value,
-      valid: stepsInfo[0].info.name.valid,
+      value: stepsInfo[0].info.name.value || "",
+      valid: stepsInfo[0].info.name.valid || false,
     },
     email: {
-      value: stepsInfo[0].info.email.value,
-      valid: stepsInfo[0].info.email.valid,
+      value: stepsInfo[0].info.email.value || "",
+      valid: stepsInfo[0].info.email.valid || false,
     },
     phone: {
-      value: stepsInfo[0].info.phone.value,
-      valid: stepsInfo[0].info.phone.valid ,
+      value: stepsInfo[0].info.phone.value || "",
+      valid: stepsInfo[0].info.phone.valid || false,
     },
   });
   const [formError, setFormError] = useState({
@@ -21,7 +21,7 @@ export default function PersonalInfo({ increaseSteps, setStepsInfo, stepsInfo })
     email: "",
     phone: "",
   });
-
+  const formContentDiv = document.querySelector(".Form-Content");
   const nameRegex = /^[a-zA-Z\p{L}\s]+$/u;
   const emailRegex = /^(?!\s)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const phoneRegex = /^\+[0-9]{12,12}$/;
@@ -54,7 +54,8 @@ export default function PersonalInfo({ increaseSteps, setStepsInfo, stepsInfo })
     const { name, email, phone } = formData;
     const errors = {};
 
-    if (name.valid && email.valid && phone.valid) {
+    if (name.valid && email.valid && phone.valid && stepNumb === 1) {
+      
       const indexToUpdate = stepsInfo.findIndex((step) => step.title === "YOUR INFO");
 
       if (indexToUpdate !== -1) {
@@ -84,9 +85,13 @@ export default function PersonalInfo({ increaseSteps, setStepsInfo, stepsInfo })
           updatedSteps[indexToUpdate].isActive = false;
         }
 
-        setStepsInfo(updatedSteps);
-
-        increaseSteps();
+        setTimeout(() => {
+          increaseSteps();
+          setStepsInfo(updatedSteps);
+          formContentDiv.classList.remove("FadeOut");
+        }, 600);
+        formContentDiv.classList.add("FadeOut")
+        
       }
     } else {
       // Set individual error messages for each field
@@ -113,11 +118,13 @@ export default function PersonalInfo({ increaseSteps, setStepsInfo, stepsInfo })
         }
       });
     }
+
+
   };
 
   return (
     <>
-      <div>
+      <div className="Form-Content-Title-Container">
         <h1 className='Form-Content-Title'>Personal info</h1>
         <p className='Form-Content-Description'>Please provide your name, email address, and phone number.</p>
       </div>
@@ -132,7 +139,7 @@ export default function PersonalInfo({ increaseSteps, setStepsInfo, stepsInfo })
           type="text"
           placeholder="e.g. Stephen King"
           name="name"
-          value={stepsInfo[0].info.name.value || formData.name.value}
+          value={formData.name.value}
         />
       </div>
       <div className="Input">
@@ -146,7 +153,7 @@ export default function PersonalInfo({ increaseSteps, setStepsInfo, stepsInfo })
           type="email"
           placeholder="e.g. 8y8YU@example.com"
           name="email"
-          value={stepsInfo[0].info.email.value || formData.email.value}
+          value={formData.email.value}
         />
       </div>
       <div className="Input">
@@ -160,14 +167,10 @@ export default function PersonalInfo({ increaseSteps, setStepsInfo, stepsInfo })
           type="tel"
           placeholder="e.g. +1 234 567 890"
           name="phone"
-          value={stepsInfo[0].info.phone.value || formData.phone.value}
+          value={formData.phone.value}
         />
       </div>
-      
         <button onClick={setInfo} className="Form-Button Personal-Info">
-          {FormData.name.valid && FormData.email.valid && FormData.phone.valid ?
-          <a href="./select-plan"></a>
-          : ""}
           Next Step
         </button>
     </>
@@ -178,5 +181,6 @@ PersonalInfo.propTypes = {
   increaseSteps: PropTypes.func.isRequired,
   setStepsInfo: PropTypes.func.isRequired,
   stepsInfo: PropTypes.array.isRequired,
+  stepNumb: PropTypes.number.isRequired
 }
 

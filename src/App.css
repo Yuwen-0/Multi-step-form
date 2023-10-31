@@ -92,14 +92,6 @@ body{
   font-size: 13px;
   color: hsl(229, 24%, 87%);
 }
-
-.Form-Content{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 70%;
-}
-
 .Form-Content > div {
   width: 80%;
   height: fit-content
@@ -111,7 +103,7 @@ body{
   align-items: center;
   width: 70%;
   position: relative;
-  margin-top: 30px;
+  transition: all 0.3s;
 }
 
 .Form-Content-Title{
@@ -177,7 +169,6 @@ body{
 
 .Form-Button.Personal-Info{
   margin-top: 74px;
-  width: 100%;
   height: 50px;
 }
 
@@ -359,3 +350,19 @@ body{
   gap: 5px;
 }
 
+.Form-Content-Title-Container{
+  top: -19px;
+  margin-bottom: 5px;
+}
+
+.FadeOut{
+  opacity: 0;
+}
+
+.Show{
+  opacity: 1;
+}
+
+.Plan-Error{
+  color: red;
+}

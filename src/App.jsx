@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useState } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
 
 import './App.css'
 import Content from './components/Content';
@@ -53,6 +52,13 @@ function App() {
     }
   ]);
 
+  const formContentDiv = useRef(null);
+
+  useEffect(() => {
+    const formContent = formContentDiv.current;
+    // Use formContent here
+  }, []);
+
   const steps = stepsInfo.map((step, index) => (
     <Step key={index} title={step.title} isActive={step.isActive} number={index + 1} />
   ));
@@ -66,47 +72,25 @@ function App() {
   };
 
   return (
-    <>
-      <Router>
-        <div className='Form-container'>
-          <section className='Form-Steps'>
-            {steps}
-          </section>
+    <div className='Form-container'>
+      <section className='Form-Steps'>
+        {steps}
+      </section>
 
-          <section className='Form-Content'>
-            <Switch>
-              <Route exact  path=''>
-                <Content 
-                  stepsInfo={stepsInfo} 
-                  setStepsInfo={setStepsInfo} 
-                  step={stepStage} 
-                  allPlans={PlansInfo} 
-                  increaseSteps={increaseSteps}
-                />
-              </Route>
-              <Route  path='/personal-info'>
-                <PersonalInfo 
-                  stepsInfo={stepsInfo} 
-                  setStepsInfo={setStepsInfo} 
-                  step={stepStage} 
-                  allPlans={PlansInfo} 
-                  increaseSteps={increaseSteps}
-                />
-              </Route>
-              <Route exact path='select-plan'>
-                <SelectPlan 
-                  stepsInfo={stepsInfo} 
-                  setStepsInfo={setStepsInfo} 
-                  step={stepStage} 
-                  allPlans={PlansInfo} 
-                  decreaseSteps={decreaseSteps}
-                />
-              </Route>
-            </Switch>
-          </section>
-        </div>
-      </Router>
-    </>
+      <section className='Form-Content' ref={formContentDiv}>
+        <Content
+          decreaseSteps={decreaseSteps}
+          increaseSteps={increaseSteps}
+          stepsInfo={stepsInfo}
+          setStepsInfo={setStepsInfo}
+          step={stepStage}
+          allPlans={PlansInfo}
+          setStepStage={setStepStage}
+          steps={steps}
+          formContentDiv={formContentDiv}
+        />
+      </section>
+    </div>
   );
 }
 
