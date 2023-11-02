@@ -68,28 +68,33 @@ export default function SelectPlan({decreaseSteps,increaseSteps ,stepsInfo, setS
         <h1 className="Form-Content-Title">Select your plan</h1>
         <p className="Form-Content-Subtitle">You have the option of monthly or yearly billing.</p>
       </div>
-      <div className="Plans-Container">
-        {plans.map((plan, index) => (
-          <Plan isYearly={selectedYearly} key={index} plan={plan} onClick={SelectPlan} />
-        ))}
-      </div>
-     {
-     Error
-     ?  <p className="Plan-Error">You Have to select one of the plans</p>
-     : null
-    }
-      <div className="Plan-Radio">
-        <div className="Plan-Radio-Container">
-            <p className={`Plan-Radio-Text ${!selectedYearly ? 'Selected' : ''}`}>Monthly</p>
-          <button className={`Plan-Radio-Button ${selectedYearly ? 'On' : ''}`} onClick={transformCircle}>
-            <div ref={circleRef} className="Plan-Radio-Circle"></div>
-          </button>
-            <p className={`Plan-Radio-Text ${selectedYearly ? 'Selected' : ''}`}>Yearly</p>
+      <div className="Error-Container">
+
+        <div className="Plans-Container">
+          {plans.map((plan, index) => (
+            <Plan isYearly={selectedYearly} key={index} plan={plan} onClick={SelectPlan} />
+            ))}
         </div>
+        {
+        Error
+        ?  <p className="Plan-Error">You Have to select one of the plans</p>
+        : null
+        }
       </div>
-      <div className="Plan-Buttons">
-        <button onClick={GoBack} className="Form-Back-Button">Go Back</button>
-        <button onClick={Submit} className="Form-Button">Next Step</button>
+      <div >
+        <div className="Plan-Radio">
+          <div className="Plan-Radio-Container">
+              <p className={`Plan-Radio-Text ${!selectedYearly ? 'Selected' : ''}`}>Monthly</p>
+            <button className={`Plan-Radio-Button ${selectedYearly ? 'On' : ''}`} onClick={transformCircle}>
+              <div ref={circleRef} className="Plan-Radio-Circle"></div>
+            </button>
+              <p className={`Plan-Radio-Text ${selectedYearly ? 'Selected' : ''}`}>Yearly</p>
+          </div>
+        </div>
+        <div className="Form-Buttons">
+          <button onClick={GoBack} className="Form-Back-Button">Go Back</button>
+          <button onClick={Submit} className="Form-Button">Next Step</button>
+        </div>
       </div>
     </>
   );
