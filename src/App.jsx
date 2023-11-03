@@ -5,12 +5,18 @@ import './App.css'
 import Content from './components/Content';
 import Step from './components/Step';
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { faTwitter, faFontAwesome } from '@fortawesome/free-brands-svg-icons'
+
+library.add(fas, faTwitter, faFontAwesome)
+
 import PlansInfo from './Jsons/PlansInfo.json';
 import PersonalInfo from './components/PersonalInfo';
 import SelectPlan from './components/SelectPlan';
 
 function App() {
-  const [stepStage, setStepStage] = useState(1);
+  const [stepStage, setStepStage] = useState(3);
   const [stepsInfo, setStepsInfo] = useState([
     {
       title: 'YOUR INFO',
@@ -36,14 +42,17 @@ function App() {
       number: 2,
       isActive: stepStage === 2,
       info: {
-        plan: '',
+        plan: 'Arcade',
         yearly: false
       },
     },
     {
       title: 'ADD-ONS',
       number: 3,
-      isActive: stepStage === 3
+      isActive: stepStage === 3,
+      info: {
+        addOns: [],
+      }
     },
     {
       title: 'SUMMARY',
@@ -51,6 +60,8 @@ function App() {
       isActive: stepStage === 4
     }
   ]);
+
+  console.log(stepStage);
 
   const formContentDiv = useRef(null);
 
@@ -64,7 +75,7 @@ function App() {
   ));
 
   const increaseSteps = () => {
-    setStepStage(prevStage => (prevStage < 4 ? prevStage + 1 : prevStage));
+    setStepStage(prevStage => prevStage + 1);
   };
 
   const decreaseSteps = () => {
@@ -95,29 +106,4 @@ function App() {
 }
 
 export default App;
-    export function AddOns() {
-      return (
-        <>
-            <label htmlFor="name">Name</label>
-              <input type="text" placeholder='e.g. Stephen King' name='name' />
-            <label htmlFor="email">Email</label>
-              <input type="text" placeholder='e.g. 8y8YU@example.com' name='email' />
-            <label htmlFor="phone">Phone Number</label>
-              <input type="text" placeholder='e.g. +1 234 567 890' name='phone' />
-        </>
-      );
-    }
-
-    export function Summary() {
-      return (
-        <>
-            <label htmlFor="name">Name</label>
-              <input type="text" placeholder='e.g. Stephen King' name='name' />
-            <label htmlFor="email">Email</label>
-              <input type="text" placeholder='e.g. 8y8YU@example.com' name='email' />
-            <label htmlFor="phone">Phone Number</label>
-              <input type="text" placeholder='e.g. +1 234 567 890' name='phone' />
-        </>
-      );
-    }
 

@@ -410,3 +410,104 @@ body{
   color: hsl(213, 96%, 18%);
 }
 
+.AddOns{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 70px;
+}
+
+.AddOn{
+  display: grid;
+  grid-template-columns: 30px 2fr 46px;
+  align-items: center;
+  gap: 10px;
+  padding-inline:25px;
+  width: 100%;
+  height: 90px; 
+  border-radius: 10px;
+  border: 2px solid hsl(229, 24%, 87%);
+  cursor: pointer;
+}
+
+.AddOn >  *{
+  pointer-events: none;
+  transition: all 0.15s;
+}
+
+.AddOn:hover{
+  border-color: hsl(243, 100%, 62%);
+}
+
+.AddOn.Selected {
+  outline: 2px solid hsl(243, 100%, 62%);
+}
+
+.AddOn-Price{
+  font-weight: 400;
+  font-size: 15px;
+  color: var(--color-purplishBlue);
+}
+
+
+
+.AddOn-Checkbox{
+  width: 25px;
+  height: 25px;
+  margin-right: 15px;
+  border-radius: 5px;
+  border: 1px solid hsl(229, 24%, 87%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.AddOn-Checkbox.Checked{
+  background-color: hsl(243, 100%, 62%);
+}
+
+
+.AddOn-Title{
+  font-weight: 500;
+  font-size: 17px;
+  color: hsl(213, 96%, 18%);
+}
+
+.AddOn-Description{
+  font-size: 15px;
+  color: hsl(230, 25%, 69%);
+}
+
+.AddOn-Info{
+  display: flex;
+  gap: 6px;
+  flex-direction: column;
+}
+
+.SummaryContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 70px;
+  width: 100%;
+  min-height: 180px;
+  height: fit-content;
+  border-radius: 10px;
+  background-color: var(--color-magnolia)
+}
+
+.PlanName{
+  font-weight: 700;
+  font-size: 20px;
+  color: hsl(213, 96%, 18%);
+}
+
+.PlanInfo{
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 25px;
+  padding-block: 15px;
+  width: 100%;
+  flex-direction: column;
+}
+

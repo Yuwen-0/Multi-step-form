@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import  SelectPlan from './SelectPlan';
 import PersonalInfo  from './PersonalInfo';
-import { AddOns, Summary } from '../App';
+import  Summary  from './Summary';
+import  AddOns  from './AddOns';
 
 export default function Content({increaseSteps,decreaseSteps ,stepsInfo, setStepsInfo, step, allPlans }) {
   
@@ -21,8 +22,20 @@ export default function Content({increaseSteps,decreaseSteps ,stepsInfo, setStep
                       setStepsInfo={setStepsInfo} 
                       plans={allPlans} 
                      />}
-      {step === 3 && <AddOns />}
-      {step === 4 && <Summary />}
+      {step === 3 && <AddOns
+                      step={step}
+                      decreaseSteps={decreaseSteps}
+                      stepsInfo={stepsInfo}
+                      increaseSteps={increaseSteps}
+                      setStepsInfo={setStepsInfo}  
+                     />}
+      {step === 4 && <Summary 
+                      stepsInfo={stepsInfo}
+                      decreaseSteps={decreaseSteps}
+                      increaseSteps={increaseSteps}
+                      setStepsInfo={setStepsInfo}
+                      step={step}
+                     />}
     </div>
   );
 }

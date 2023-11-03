@@ -15,10 +15,8 @@ export default function SelectPlan({decreaseSteps,increaseSteps ,stepsInfo, setS
     const target = circleRef.current;
 
     if (target.classList.contains("MoveCircle")) {
-      target.classList.remove("MoveCircle" , "On");
       setSelectedYearly(false);
     } else {
-      target.classList.add("MoveCircle", "On");
       setSelectedYearly(true);
     }
   }
@@ -86,7 +84,7 @@ export default function SelectPlan({decreaseSteps,increaseSteps ,stepsInfo, setS
           <div className="Plan-Radio-Container">
               <p className={`Plan-Radio-Text ${!selectedYearly ? 'Selected' : ''}`}>Monthly</p>
             <button className={`Plan-Radio-Button ${selectedYearly ? 'On' : ''}`} onClick={transformCircle}>
-              <div ref={circleRef} className="Plan-Radio-Circle"></div>
+              <div ref={circleRef} className={`Plan-Radio-Circle ${selectedYearly ? 'MoveCircle On' : ''}`}></div>
             </button>
               <p className={`Plan-Radio-Text ${selectedYearly ? 'Selected' : ''}`}>Yearly</p>
           </div>
