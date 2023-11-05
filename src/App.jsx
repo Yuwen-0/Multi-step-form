@@ -10,10 +10,12 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { faTwitter, faFontAwesome } from '@fortawesome/free-brands-svg-icons'
 
 library.add(fas, faTwitter, faFontAwesome)
-
-import PlansInfo from './Jsons/PlansInfo.json';
 import PersonalInfo from './components/PersonalInfo';
 import SelectPlan from './components/SelectPlan';
+
+import ArcadeImage from "/assets/images/icon-arcade.svg"
+import AdvancedImage from "/assets/images/icon-advanced.svg"
+import ProImage from "/assets/images/icon-pro.svg"
 
 function App() {
   const [stepStage, setStepStage] = useState(1);
@@ -71,6 +73,29 @@ function App() {
       isActive: stepStage === 4
     }
   ]);
+  const PlansInfo = [
+    {
+      planName: "Arcade",
+      monthlyPrice: 9,
+      yearlyPrice: 90,
+      imgSrc: ArcadeImage,
+      isSelected: false
+    },
+    {
+      planName: "Advanced",
+      monthlyPrice: 12,
+      yearlyPrice: 120,
+      imgSrc: AdvancedImage,
+      isSelected: false
+    },
+    {
+      planName: "Pro",
+      monthlyPrice: 15,
+      yearlyPrice: 150,
+      imgSrc: ProImage,
+      isSelected: false
+    }
+  ];
 
   const formContentDiv = useRef(null);
 
