@@ -119,11 +119,17 @@ export default function PersonalInfo({ increaseSteps, setStepsInfo, stepsInfo,st
       });
     }
 
-
   };
+  
+    
 
   return (
     <>
+      <div className="Form-Button-Container PersonalInfo">
+        <button onClick={setInfo} className="Form-Button Personal-Info">
+          Next Step
+        </button>
+      </div>
       <div className="Form-Content-Title-Container">
         <h1 className='Form-Content-Title'>Personal info</h1>
         <p className='Form-Content-Description'>Please provide your name, email address, and phone number.</p>
@@ -169,11 +175,6 @@ export default function PersonalInfo({ increaseSteps, setStepsInfo, stepsInfo,st
           name="phone"
           value={formData.phone.value}
         />
-      </div>
-      <div className="Form-Button-Container PersonalInfo">
-        <button onClick={setInfo} className="Form-Button Personal-Info">
-          Next Step
-        </button>
       </div>
     </>
   );

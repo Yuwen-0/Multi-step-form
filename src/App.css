@@ -32,7 +32,6 @@ body{
   align-items: center;
   min-height: 100vh;
   min-width: 100vw;
-  position: relative;
 }
 .Form-Button-Container.PersonalInfo{
   height: 50px;
@@ -114,7 +113,6 @@ body{
   flex-direction: column;
   align-items: center;
   width: 70%;
-  position: relative;
   transition: all 0.3s;
 }
 
@@ -743,7 +741,6 @@ body{
       display: block;
       align-items: flex-start;
       height: 100%;
-      position: relative;
     }
     body::-webkit-scrollbar {
       display: none;
@@ -789,7 +786,7 @@ body{
       width: 100%;
       position: absolute;
       top: 50px;
-      align-items: normal;
+      height: 100%;
     }
 
     .Form-Content > div{
@@ -860,8 +857,8 @@ body{
       background-color: white;
       width: 200%;
       height: 80px;
-      right: -30px;
-      bottom: -222px;
+      right: -37px;
+      bottom: -335px;
     }
     .Plan-Error{
       opacity:0;
@@ -871,9 +868,9 @@ body{
     }
     .Form-Buttons.Addon-Buttons{
       width: 125%;
-      padding:-23px;
+      padding:37px;
       height: 80px;
-      bottom: -212px;
+      bottom: -295px;
     }
     .Form-Content-Title-Container{
       position: relative;
@@ -885,7 +882,7 @@ body{
       position: absolute;
       width: 123%;
       height: 71px;
-      bottom: -97px;
+      bottom: -189px;
     }
     .Form-SelectPlan{
       width: 100%;
@@ -900,10 +897,12 @@ body{
     }
     .Form-Buttons.Summary{
       width: 137%;
-      left: -50px;
+      left: -60px;
       position: absolute;
       display: flex;
-      bottom:-538px;
+      bottom:-642px;
+      padding: 40px;
+      
     }
     .End{
       height: 400px;
