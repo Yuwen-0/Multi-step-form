@@ -14,7 +14,7 @@ export default function AddOns({ decreaseSteps, increaseSteps, stepsInfo }) {
       YPrice: 10,
       monthlyPrice: '+$1/mo',
       yearlyPrice: '+$10/yr',
-      isSelected: false,
+      isSelected: stepsInfo[2].info.addOns[0].isSelected, 
     },
     {
       title: 'Larger storage',
@@ -23,7 +23,7 @@ export default function AddOns({ decreaseSteps, increaseSteps, stepsInfo }) {
       YPrice: 20,
       monthlyPrice: '+$2/mo',
       yearlyPrice: '+$20/yr',
-      isSelected: false,
+      isSelected: stepsInfo[2].info.addOns[1].isSelected,
     },
     {
       title: 'Customizable profile',
@@ -32,7 +32,7 @@ export default function AddOns({ decreaseSteps, increaseSteps, stepsInfo }) {
       YPrice: 20,
       monthlyPrice: '+$2/mo',
       yearlyPrice: '+$20/yr',
-      isSelected: false,
+      isSelected: stepsInfo[2].info.addOns[2].isSelected,
     },
   ]);
 
@@ -43,6 +43,7 @@ export default function AddOns({ decreaseSteps, increaseSteps, stepsInfo }) {
         YearPrice: addOn.YPrice,
         MonthPrice: addOn.MPrice,
         isSelected: addOn.isSelected,
+        title: addOn.title
       }
       addonsData.push(addonData)
     })
@@ -83,6 +84,7 @@ export default function AddOns({ decreaseSteps, increaseSteps, stepsInfo }) {
 
   return (
     <>
+    <div className="Form-Content-Container AddOns">
       <div className="Form-Content-Title-Container">
         <h1 className="Form-Content-Title">Pick add-ons</h1>
         <p className="Form-Content-Subtitle">Add-ons help enhance your gaming experience</p>
@@ -101,9 +103,10 @@ export default function AddOns({ decreaseSteps, increaseSteps, stepsInfo }) {
           />
           ))}
       </div>
-      <div className="Form-Buttons">
+      <div className="Form-Buttons Addon-Buttons">
         <button onClick={goBack} className="Form-Back-Button">Go Back</button>
         <button onClick={SetInfo} className="Form-Button">Next Step</button>
+      </div>
       </div>
     </>
   );

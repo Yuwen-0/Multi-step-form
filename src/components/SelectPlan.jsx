@@ -7,6 +7,7 @@ export default function SelectPlan({decreaseSteps,increaseSteps ,stepsInfo, setS
   const [selectedYearly, setSelectedYearly] = useState(stepsInfo[step-1].info.yearly);
   const [selectedPlan, setSelectedPlan] = useState(stepsInfo[step-1].info.plan);
   const [Error, setError] = useState(false)
+
   const circleRef = useRef(null);
 
 
@@ -62,6 +63,7 @@ export default function SelectPlan({decreaseSteps,increaseSteps ,stepsInfo, setS
 
   return (
     <>
+      <div className="Form-SelectPlan">
       <div className="Form-Content-Title-Container">
         <h1 className="Form-Content-Title">Select your plan</h1>
         <p className="Form-Content-Subtitle">You have the option of monthly or yearly billing.</p>
@@ -73,13 +75,8 @@ export default function SelectPlan({decreaseSteps,increaseSteps ,stepsInfo, setS
             <Plan isYearly={selectedYearly} key={index} plan={plan} onClick={SelectPlan} />
             ))}
         </div>
-        {
-        Error
-        ?  <p className="Plan-Error">You Have to select one of the plans</p>
-        : null
-        }
+          <p className={`Plan-Error ${Error ? 'FadeIn' : ''}`}>you must select a plan</p>
       </div>
-      <div >
         <div className="Plan-Radio">
           <div className="Plan-Radio-Container">
               <p className={`Plan-Radio-Text ${!selectedYearly ? 'Selected' : ''}`}>Monthly</p>
@@ -89,7 +86,7 @@ export default function SelectPlan({decreaseSteps,increaseSteps ,stepsInfo, setS
               <p className={`Plan-Radio-Text ${selectedYearly ? 'Selected' : ''}`}>Yearly</p>
           </div>
         </div>
-        <div className="Form-Buttons">
+        <div className="Form-Buttons Select-Plan">
           <button onClick={GoBack} className="Form-Back-Button">Go Back</button>
           <button onClick={Submit} className="Form-Button">Next Step</button>
         </div>

@@ -16,7 +16,7 @@ import PersonalInfo from './components/PersonalInfo';
 import SelectPlan from './components/SelectPlan';
 
 function App() {
-  const [stepStage, setStepStage] = useState(3);
+  const [stepStage, setStepStage] = useState(1);
   const [stepsInfo, setStepsInfo] = useState([
     {
       title: 'YOUR INFO',
@@ -42,7 +42,8 @@ function App() {
       number: 2,
       isActive: stepStage === 2,
       info: {
-        plan: 'Arcade',
+        plan: '',
+        planPrice: 9,
         yearly: false
       },
     },
@@ -51,7 +52,17 @@ function App() {
       number: 3,
       isActive: stepStage === 3,
       info: {
-        addOns: [],
+        addOns: [
+          {
+            isSelected: false,
+          },
+          {
+            isSelected: false,
+          },
+          {
+            isSelected: false,
+          }
+        ],
       }
     },
     {
@@ -60,8 +71,6 @@ function App() {
       isActive: stepStage === 4
     }
   ]);
-
-  console.log(stepStage);
 
   const formContentDiv = useRef(null);
 
@@ -85,7 +94,9 @@ function App() {
   return (
     <div className='Form-container'>
       <section className='Form-Steps'>
-        {steps}
+        <div className='Form-Steps-Container-Mobile'>
+         {steps}
+        </div>
       </section>
 
       <section className='Form-Content' ref={formContentDiv}>

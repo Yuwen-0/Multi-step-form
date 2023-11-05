@@ -170,9 +170,11 @@ export default function PersonalInfo({ increaseSteps, setStepsInfo, stepsInfo,st
           value={formData.phone.value}
         />
       </div>
+      <div className="Form-Button-Container PersonalInfo">
         <button onClick={setInfo} className="Form-Button Personal-Info">
           Next Step
         </button>
+      </div>
     </>
   );
 }

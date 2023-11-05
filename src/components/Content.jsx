@@ -3,8 +3,9 @@ import  SelectPlan from './SelectPlan';
 import PersonalInfo  from './PersonalInfo';
 import  Summary  from './Summary';
 import  AddOns  from './AddOns';
+import  End  from './End';
 
-export default function Content({increaseSteps,decreaseSteps ,stepsInfo, setStepsInfo, step, allPlans }) {
+export default function Content({increaseSteps,decreaseSteps ,stepsInfo, setStepsInfo, step, allPlans,setStepStage }) {
   
   return (
     <div className='Form-Content-Inputs'>
@@ -35,7 +36,10 @@ export default function Content({increaseSteps,decreaseSteps ,stepsInfo, setStep
                       increaseSteps={increaseSteps}
                       setStepsInfo={setStepsInfo}
                       step={step}
+                      allPlans={allPlans}
+                      setStepStage={setStepStage}
                      />}
+      {step === 5 && <End />}
     </div>
   );
 }
