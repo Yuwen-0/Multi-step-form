@@ -859,21 +859,21 @@ body{
       align-items: center;
       background-color: white;
       width: 200%;
-      height: 100px;
+      height: 80px;
       right: -30px;
-      bottom: -300px;
+      bottom: -222px;
     }
     .Plan-Error{
       opacity:0;
       transition: all .15s;
       position: relative;
-      bottom: -170px;
+      bottom: -159px;
     }
     .Form-Buttons.Addon-Buttons{
       width: 125%;
       padding:-23px;
       height: 80px;
-      bottom: -285px;
+      bottom: -212px;
     }
     .Form-Content-Title-Container{
       position: relative;
@@ -884,7 +884,8 @@ body{
     .Form-Buttons.Select-Plan{
       position: absolute;
       width: 123%;
-      bottom: -180px;
+      height: 71px;
+      bottom: -97px;
     }
     .Form-SelectPlan{
       width: 100%;
@@ -892,17 +893,17 @@ body{
     }
     .Plan-Radio-Container{
       position: relative;
-      bottom: -30px;
+      bottom: -20px;
     }
     .Form-Content-Container.AddOns{
       height: 280px;
     }
     .Form-Buttons.Summary{
       width: 137%;
-      left: -60px;
+      left: -50px;
       position: absolute;
       display: flex;
-      bottom:-620px;
+      bottom:-538px;
     }
     .End{
       height: 400px;
