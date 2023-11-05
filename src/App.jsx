@@ -13,9 +13,9 @@ library.add(fas, faTwitter, faFontAwesome)
 import PersonalInfo from './components/PersonalInfo';
 import SelectPlan from './components/SelectPlan';
 
-import ArcadeImage from "/assets/images/icon-arcade.svg"
-import AdvancedImage from "/assets/images/icon-advanced.svg"
-import ProImage from "/assets/images/icon-pro.svg"
+import ArcadeImage from "/assets/icon-arcade.svg"
+import AdvancedImage from "/assets/icon-advanced.svg"
+import ProImage from "/assets/icon-pro.svg"
 
 function App() {
   const [stepStage, setStepStage] = useState(1);

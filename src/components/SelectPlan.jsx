@@ -75,7 +75,7 @@ export default function SelectPlan({decreaseSteps,increaseSteps ,stepsInfo, setS
             <Plan isYearly={selectedYearly} key={index} plan={plan} onClick={SelectPlan} />
             ))}
         </div>
-          <p className={`Plan-Error ${Error ? 'FadeIn' : ''}`}>you must select a plan</p>
+          <p className={`Plan-Error ${Error ? 'FadeIn' : 'FadeOut'}`}>you must select a plan</p>
       </div>
         <div className="Plan-Radio">
           <div className="Plan-Radio-Container">
