@@ -1,0 +1,23 @@
+.personalInfo{
+    width: 67%;
+    padding: 2em 3em 0 5em;
+}
+
+
+.personalInfoTitle{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.title{
+    color: var(--marine-blue);
+    font-size: 1.8em;
+    font-weight: 700;
+}
+
+.infoText{
+    color: var(--cool-gray);
+    font-size: .9em;
+}
+
