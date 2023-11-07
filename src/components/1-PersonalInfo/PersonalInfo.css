@@ -7,7 +7,7 @@
 .personalInfoTitle{
     display: flex;
     flex-direction: column;
-    gap: 7px;
+    gap: 6px;
 }
 
 .title{
