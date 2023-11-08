@@ -143,3 +143,26 @@ html{
   color: var(--marine-blue);
   border: none;
 } 
+
+.hidden{
+  display: none;
+}
+
+.nextButton{
+  cursor: pointer;
+  position: absolute;
+  background-color: var(--marine-blue);
+  color: var(--white);
+  font-weight: 700;
+  border: none;
+  border-radius: 5px;
+  padding: .9em;
+  width: 110px;
+  bottom: 0;
+  right: 0;
+  transition: all .3s;
+}
+
+.nextButton:active{
+  scale: .7;
+}

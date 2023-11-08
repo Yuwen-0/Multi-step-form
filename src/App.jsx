@@ -11,12 +11,31 @@ function App() {
 
   const [activeStep, setActiveStep] = useState(1);
 
+  let NextbuttonText;
+  if (activeStep < 4) {
+    NextbuttonText = 'Next Step';
+  }else if (activeStep === 4) {
+    NextbuttonText = 'Submit';
+  }
+
+  let PrevbuttonText;
+  if (activeStep > 1) {
+    PrevbuttonText = 'go back';
+  }else if (activeStep === 1) {
+    PrevbuttonText = '';
+  }
+
   return (
     <main className="multiStepFormLayout">
       <header className='stepsShowCase'>
         <Steps activeStep={activeStep}/>
       </header>
-      <Content activeStep={activeStep}/>
+      <Content activeStep={activeStep}>
+        <div>
+          <button className={!PrevbuttonText ? 'hidden prevButton' : 'prevButton'}>{PrevbuttonText}</button>
+          <button className="nextButton">{NextbuttonText}</button>
+        </div>
+      </Content>
     </main>
   );
 }

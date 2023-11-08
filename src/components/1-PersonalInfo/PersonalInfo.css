@@ -1,6 +1,7 @@
 .personalInfo{
     width: 67%;
-    padding: 2em 3em 0 5em;
+    margin: 2em 3em 0 5em;
+    position: relative;
 }
 
 
@@ -20,4 +21,105 @@
     color: var(--cool-gray);
     font-size: .9em;
 }
+
+.infoInputs{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 2em;
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.input label{
+    color: var(--marine-blue);
+    font-size: .9em;
+}
+
+.input input{
+    width: 100%;
+    height: 40px;
+    padding: 1.7em;
+    border-radius: 5px;
+    border: 1px solid var(--light-gray);
+    font-size: .9em;
+    font-weight: 500;
+    color: var(--marine-blue);
+}
+
+.input input:focus{
+    outline: none;
+    border: 1px solid var(--purplish-blue);
+}
+
+.input input::placeholder{
+    color: var(--cool-gray);
+}
+
+.phoneInput{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    height: 40px;
+}
+
+.phoneInput input{
+    width: 100%;
+    height: 40px;
+    padding: 1.7em;
+    border-radius: 5px;
+    border: 1px solid var(--light-gray);
+    font-size: .9em;
+    font-weight: 500;
+    color: var(--marine-blue);
+}
+
+.phoneInput input:focus{
+    outline: none;
+    border: 1px solid var(--purplish-blue);
+}
+
+.phoneInput input::placeholder{
+    color: var(--cool-gray);
+}
+
+.phoneInput select{
+    width: 25%;
+    height: 50px;
+    padding: .7em;
+    border-radius: 5px;
+    border: 1px solid var(--light-gray);
+    font-size: .9em;
+    font-weight: 500;
+    color: var(--marine-blue);
+}
+
+.phoneInput select:focus{
+    outline: none;
+    border: 1px solid var(--purplish-blue);
+}   
+
+.phoneInput select option{
+    color: var(--marine-blue);
+}
+
+.input input.error{
+    color: var(--strawberry-red);
+    font-weight: 500;
+    border: 1px solid var(--strawberry-red);
+    outline: rgb(97, 25, 25);
+}
+
+.input input.error::placeholder{
+    color: rgba(255, 0, 0, 0.401);
+}
+
+
+
+
 

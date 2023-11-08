@@ -9,10 +9,10 @@ import End from '../5-End/End.jsx';
 
 
 
-const Content = ({activeStep}) => {
+const Content = ({activeStep , children}) => {
     switch(activeStep){
         case 1:
-            return <PersonalInfo/>
+            return <PersonalInfo> {children} </PersonalInfo>
         case 2:
             return <SelectPlan/>
         case 3:
@@ -25,7 +25,8 @@ const Content = ({activeStep}) => {
 }
 
 Content.propTypes = {
-    activeStep: PropTypes.number
+    activeStep: PropTypes.number,
+    children: PropTypes.node
 }
 
 export default Content
