@@ -9,8 +9,21 @@ import {  useRef, useState } from 'react';
 
 function App() {
 
-  const [activeStep, setActiveStep] = useState(1);
-  
+  const [activeStep, setActiveStep] = useState(2);
+  const [formInfo, setFormInfo] = useState({
+    personalInfo: {
+      name: "",
+      email: "",
+      phone: "",
+      country: "",
+    },
+    planInfo: {
+      selectedPlan: "",
+      isYearly: false
+    }
+  });
+
+
   let contentContainer = useRef(null);
 
   const nextStep = () => {
@@ -28,6 +41,8 @@ function App() {
       </header>
       <div ref={contentContainer} className="contentContainer">
         <Content 
+          setFormInfo={setFormInfo}
+          formInfo={formInfo}
           activeStep={activeStep} 
           nextStep={nextStep}
           prevStep={prevStep}

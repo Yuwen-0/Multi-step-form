@@ -148,6 +148,14 @@
     font-weight: 500;
 }
 
+.input select.error{
+    color: var(--strawberry-red);
+    font-weight: 500;
+    border: 1px solid var(--strawberry-red);
+    outline: rgb(97, 25, 25);
+    animation: shake .4s;
+}
+
 .fadeOut{
     opacity: 0;
 }

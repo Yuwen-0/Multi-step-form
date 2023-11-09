@@ -4,21 +4,19 @@ import './PersonalInfo.css'
 import {useState} from 'react';
 import PropTypes from 'prop-types';
 
-const PersonalInfo = ({nextStep , prevStep,contentContainer}) => {
+const PersonalInfo = ({nextStep ,contentContainer,setFormInfo,formInfo}) => {
     const [error , setError] = useState({
         name: false,
         email: false,
-        phone: false
+        phone: false,
+        country: false
     })
     const [values, setValues] = useState({
-        name: '',
-        email: '',
-        phone: '',
-        country: 'turkey',
+        name: formInfo.personalInfo.name,
+        email: formInfo.personalInfo.email,
+        phone: formInfo.personalInfo.phone,
+        country: formInfo.personalInfo.country,
     })
-
-    
-    const [seccondClick , setSeccondClick] = useState(false);
 
 
     const Change = (e) => {
@@ -45,25 +43,46 @@ const PersonalInfo = ({nextStep , prevStep,contentContainer}) => {
             }else{
                 setError(prev => ({...prev, [name]: false}))
             }
+        }else if(name === 'country'){
+            if(!value){
+                setError(prev => ({...prev, [name]: true}))
+            }else{
+                setError(prev => ({...prev, [name]: false}))
+            }
         }
 
         setValues(prev => ({...prev, [name]: value}))
 
     }   
         const SaveInfo = () => {
-            if(values.name && values.email && values.phone && !error.name && !error.email && !error.phone){
+            if(values.name && values.email && values.phone && values.country && !error.name && !error.email && !error.phone && !error.country){ 
                 setTimeout(() => {
                     contentContainer.current.classList.remove('fadeOut');
+                    setFormInfo(prev => ({
+                        ...prev,
+                        personalInfo: {
+                            name: values.name,
+                            email: values.email,
+                            phone: values.phone,
+                            country: values.country
+                        }
+                    }))
                     nextStep();
                 }, 300);
                 contentContainer.current.classList.add('fadeOut');
             }else{
-                setSeccondClick(true)
-                setError({
-                    name: true,
-                    email: true,
-                    phone: true
-                })
+                if(!values.name){
+                    setError(prev => ({...prev, name: true}))
+                }
+                if(!values.email){
+                    setError(prev => ({...prev, email: true}))
+                }
+                if(!values.phone){
+                    setError(prev => ({...prev, phone: true}))
+                }
+                if(!values.country){
+                    setError(prev => ({...prev, country: true}))
+                }
             }
         }
 
@@ -115,8 +134,9 @@ const PersonalInfo = ({nextStep , prevStep,contentContainer}) => {
                          onInput={Change}
                          name="country"
                          id="country"
-                         className={error.phone ? 'error' : ''}
+                         className={error.country ? 'error' : ''}
                         >
+                            <option value="">Select your country</option>
                             <option value="australia">+61</option>
                             <option value="canada">+1</option>
                             <option value="uk">+44</option>
@@ -146,7 +166,9 @@ const PersonalInfo = ({nextStep , prevStep,contentContainer}) => {
 PersonalInfo.propTypes = {
     nextStep: PropTypes.func,
     prevStep: PropTypes.func,
-    contentContainer: PropTypes.object
+    contentContainer: PropTypes.object,
+    setFormInfo: PropTypes.func,
+    formInfo: PropTypes.object
 }
 
 

@@ -1,0 +1,118 @@
+.selectPlan{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 75%;
+    height: 94%;
+    margin: 1em auto;
+}
+
+.selectPlanTitle{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.plans{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-top: 2em;
+}
+
+.plan{
+    width: 165px;
+    height: 165px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1em;
+    border: 2px solid var(--light-gray);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.plan:hover{
+    border: 2px solid var(--purplish-blue);
+}
+
+
+.planTitle{
+    color: var(--marine-blue);
+    font-weight: 700;
+    font-size: 1.1em;
+}
+
+.price{
+    color: var(--cool-gray);
+    font-weight: 700;
+    font-size: .9em;
+}
+
+.icon{
+    width: 40px;
+}
+
+.monthlyYearlySelector{
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2em;
+    background-color: var(--magnolia);
+    border-radius: 5px;
+    padding: .5em;
+}
+
+.monthly{
+    color: var(--cool-gray);
+    font-weight: 700;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.yearly{
+    color: var(--cool-gray);
+    font-weight: 700;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.selected{
+    color: var(--purplish-blue);
+}
+
+.switch{
+    display: flex;
+    align-items: center;
+    padding-left:2px;
+    padding-bottom: .63px;
+    gap: 10px;
+    width: 46px;
+    height: 25px;
+    background-color: var(--marine-blue);
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.circle{
+    width: 16px;
+    height: 16px;
+    margin-top: -.1px;
+    margin-left:1px;
+    background-color: var(--white);
+    border-radius: 100%;
+    transition: all .3s;
+}
+
+.toggleCircle{
+    transform: translateX(22px);
+    background-color: var(--marine-blue);
+}
+
+.toggleSwitch{
+    background-color: var(--magnolia);
+    border: 1px solid var(--marine-blue);
+}
