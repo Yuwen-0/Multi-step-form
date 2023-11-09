@@ -4,7 +4,7 @@ import './PersonalInfo.css'
 import {useState} from 'react';
 import PropTypes from 'prop-types';
 
-const PersonalInfo = ({children}) => {
+const PersonalInfo = ({nextStep , prevStep,contentContainer}) => {
     const [error , setError] = useState({
         name: false,
         email: false,
@@ -13,10 +13,12 @@ const PersonalInfo = ({children}) => {
     const [values, setValues] = useState({
         name: '',
         email: '',
-        phone: ''
+        phone: '',
+        country: 'turkey',
     })
 
-    console.log(error);
+    
+    const [seccondClick , setSeccondClick] = useState(false);
 
 
     const Change = (e) => {
@@ -47,7 +49,23 @@ const PersonalInfo = ({children}) => {
 
         setValues(prev => ({...prev, [name]: value}))
 
-    }
+    }   
+        const SaveInfo = () => {
+            if(values.name && values.email && values.phone && !error.name && !error.email && !error.phone){
+                setTimeout(() => {
+                    contentContainer.current.classList.remove('fadeOut');
+                    nextStep();
+                }, 300);
+                contentContainer.current.classList.add('fadeOut');
+            }else{
+                setSeccondClick(true)
+                setError({
+                    name: true,
+                    email: true,
+                    phone: true
+                })
+            }
+        }
 
     return (
         <>
@@ -58,7 +76,10 @@ const PersonalInfo = ({children}) => {
             </header>
             <div className="infoInputs">
                 <div className="input">
-                    <label htmlFor="name">Name</label>
+                    <label 
+                     htmlFor="name"
+                     className={error.name ? 'error' : ''}
+                    >Name</label>
                     <input 
                         className={error.name ? 'error' : ''}
                         placeholder='e.g. Stephen King' 
@@ -70,7 +91,9 @@ const PersonalInfo = ({children}) => {
                     />
                 </div>
                 <div className="input">
-                    <label htmlFor="email">Email Address</label>
+                    <label 
+                     htmlFor="email"
+                     className={error.email ? 'error' : ''}>Email Address</label>
                     <input 
                         className={error.email ? 'error' : ''}
                         placeholder='e.g. 6sLmH@example.com' 
@@ -82,14 +105,23 @@ const PersonalInfo = ({children}) => {
                     />
                 </div>
                 <div className="input">
-                    <label htmlFor="phone">Phone Number</label>
+                    <label 
+                     htmlFor="phone"
+                     className={error.phone ? 'error' : ''}
+                    >Phone Number</label>
                     <div className="phoneInput">
-                        <select name="country" id="country">
+                        <select 
+                         defaultValue={values.country}
+                         onInput={Change}
+                         name="country"
+                         id="country"
+                         className={error.phone ? 'error' : ''}
+                        >
                             <option value="australia">+61</option>
                             <option value="canada">+1</option>
                             <option value="uk">+44</option>
                             <option value="france">+33</option>
-                            <option defaultValue={true} value="turkey">+90</option>
+                            <option value="turkey">+90</option>
                         </select>   
                         <input
                             className={error.phone ? 'error' : ''}
@@ -103,14 +135,18 @@ const PersonalInfo = ({children}) => {
                     </div>
                 </div>
             </div>
-        {children}
+            <div>
+                <button onClick={SaveInfo} className="nextButton">Next Step</button>
+            </div>
         </div>
         </>
     )
 }
 
 PersonalInfo.propTypes = {
-    children: PropTypes.node
+    nextStep: PropTypes.func,
+    prevStep: PropTypes.func,
+    contentContainer: PropTypes.object
 }
 
 

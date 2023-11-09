@@ -1,6 +1,7 @@
 .personalInfo{
     width: 67%;
-    margin: 2em 3em 0 5em;
+    margin: 1em auto;
+    height: 94%;
     position: relative;
 }
 
@@ -38,6 +39,7 @@
 .input label{
     color: var(--marine-blue);
     font-size: .9em;
+    transition: all .3s;
 }
 
 .input input{
@@ -49,6 +51,7 @@
     font-size: .9em;
     font-weight: 500;
     color: var(--marine-blue);
+    transition: all .3s;
 }
 
 .input input:focus{
@@ -113,12 +116,41 @@
     font-weight: 500;
     border: 1px solid var(--strawberry-red);
     outline: rgb(97, 25, 25);
+    animation: shake .4s;
 }
 
+@keyframes shake{
+    0%{
+        transform: translateX(0);
+    }
+    20%{
+        transform: translateX(5px);
+    }
+    40%{
+        transform: translateX(-5px);
+    }
+    60%{
+        transform: translateX(5px);
+    }
+    80%{
+        transform: translateX(-5px);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
 .input input.error::placeholder{
     color: rgba(255, 0, 0, 0.401);
 }
 
+.input label.error{
+    color: var(--strawberry-red);
+    font-weight: 500;
+}
+
+.fadeOut{
+    opacity: 0;
+}
 
 
 

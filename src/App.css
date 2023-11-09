@@ -166,3 +166,10 @@ html{
 .nextButton:active{
   scale: .7;
 }
+
+.contentContainer{
+  width: 70%;
+  height: 100%;
+  position: relative;
+  transition: all .3s;
+}
