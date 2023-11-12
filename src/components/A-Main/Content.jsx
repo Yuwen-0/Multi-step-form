@@ -20,7 +20,9 @@ const Content = ({setFormInfo,formInfo ,activeStep,contentContainer ,nextStep,pr
                    />
         case 2:
             return <SelectPlan
+                    formInfo={formInfo}
                     nextStep={nextStep}
+                    setFormInfo={setFormInfo}
                     prevStep={prevStep}
                     contentContainer={contentContainer} 
                    />

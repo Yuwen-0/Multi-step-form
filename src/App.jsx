@@ -9,7 +9,7 @@ import {  useRef, useState } from 'react';
 
 function App() {
 
-  const [activeStep, setActiveStep] = useState(2);
+  const [activeStep, setActiveStep] = useState(3);
   const [formInfo, setFormInfo] = useState({
     personalInfo: {
       name: "",

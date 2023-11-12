@@ -111,7 +111,7 @@
     color: var(--marine-blue);
 }
 
-.input input.error{
+.input input.Inputerror{
     color: var(--strawberry-red);
     font-weight: 500;
     border: 1px solid var(--strawberry-red);
@@ -139,16 +139,16 @@
         transform: translateX(0);
     }
 }
-.input input.error::placeholder{
+.input input.Inputerror::placeholder{
     color: rgba(255, 0, 0, 0.401);
 }
 
-.input label.error{
+.input label.Inputerror{
     color: var(--strawberry-red);
     font-weight: 500;
 }
 
-.input select.error{
+.input select.Inputerror{
     color: var(--strawberry-red);
     font-weight: 500;
     border: 1px solid var(--strawberry-red);

@@ -97,10 +97,10 @@ const PersonalInfo = ({nextStep ,contentContainer,setFormInfo,formInfo}) => {
                 <div className="input">
                     <label 
                      htmlFor="name"
-                     className={error.name ? 'error' : ''}
+                     className={error.name ? 'Inputerror' : ''}
                     >Name</label>
                     <input 
-                        className={error.name ? 'error' : ''}
+                        className={error.name ? 'Inputerror' : ''}
                         placeholder='e.g. Stephen King' 
                         name='name'
                         type="text" 
@@ -112,9 +112,9 @@ const PersonalInfo = ({nextStep ,contentContainer,setFormInfo,formInfo}) => {
                 <div className="input">
                     <label 
                      htmlFor="email"
-                     className={error.email ? 'error' : ''}>Email Address</label>
+                     className={error.email ? 'Inputerror' : ''}>Email Address</label>
                     <input 
-                        className={error.email ? 'error' : ''}
+                        className={error.email ? 'Inputerror' : ''}
                         placeholder='e.g. 6sLmH@example.com' 
                         type="email" 
                         name="email"
@@ -126,7 +126,7 @@ const PersonalInfo = ({nextStep ,contentContainer,setFormInfo,formInfo}) => {
                 <div className="input">
                     <label 
                      htmlFor="phone"
-                     className={error.phone ? 'error' : ''}
+                     className={error.phone ? 'Inputerror' : ''}
                     >Phone Number</label>
                     <div className="phoneInput">
                         <select 
@@ -134,7 +134,7 @@ const PersonalInfo = ({nextStep ,contentContainer,setFormInfo,formInfo}) => {
                          onInput={Change}
                          name="country"
                          id="country"
-                         className={error.country ? 'error' : ''}
+                         className={error.country ? 'Inputerror' : ''}
                         >
                             <option value="">Select your country</option>
                             <option value="australia">+61</option>
@@ -144,7 +144,7 @@ const PersonalInfo = ({nextStep ,contentContainer,setFormInfo,formInfo}) => {
                             <option value="turkey">+90</option>
                         </select>   
                         <input
-                            className={error.phone ? 'error' : ''}
+                            className={error.phone ? 'Inputerror' : ''}
                             placeholder='e.g. 123 456 78 90' 
                             type="tel" 
                             name="phone"

@@ -1,0 +1,66 @@
+.addons{
+    width: 77%;
+    margin: 1em auto;
+    height: 94%;
+    position: relative;
+
+}
+
+.addonsInfo{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.addon{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    height: 78px;
+    border-radius: 10px;
+    border: 1px solid var(--cool-gray);
+    padding: .5em 1em;
+    cursor: pointer;
+    transition: all .15s;
+}
+
+.addon:hover{
+    border-color: var(--purplish-blue);
+}
+
+.addonTitle{
+    color: var(--marine-blue);
+    font-weight: 500;
+}
+
+.addonDescription{
+    color: var(--cool-gray);
+    font-size: .9em;
+    font-weight: 500;
+}
+
+.addonsList{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    height: 70%;
+    margin-top: 2em;
+    position: relative;
+
+}
+
+.addonCheckbox{
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--cool-gray);
+    border-radius: 15%;
+    cursor: pointer;
+}
+
+.addonPrice{
+    color: var(--purplish-blue);
+    font-weight: 700;
+    margin: 0 0 0 auto;
+}
