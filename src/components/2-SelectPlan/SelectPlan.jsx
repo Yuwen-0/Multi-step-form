@@ -13,9 +13,9 @@ const SelectPlan = ({ formInfo, setFormInfo,nextStep, prevStep,contentContainer 
     const [error , setError] = useState(false)
 
     const plans = [
-        { icon: './assets/images/icon-arcade.svg', title: 'Arcade', Number: 0, monthlyPrice: '$9/mo', yearlyPrice: '$90/yr', isSelected: plansSelected[0] },
-        { icon: './assets/images/icon-advanced.svg', title: 'Advanced', Number: 1, monthlyPrice: '$12/mo', yearlyPrice: '$120/yr', isSelected: plansSelected[1] },
-        { icon: './assets/images/icon-pro.svg', title: 'Pro', Number: 2, monthlyPrice: '$15/mo', yearlyPrice: '$150/yr', isSelected: plansSelected[2] }
+        { icon: '/assets/images/icon-arcade.svg', title: 'Arcade', Number: 0, monthlyPrice: '$9/mo', yearlyPrice: '$90/yr', isSelected: plansSelected[0] },
+        { icon: '/assets/images/icon-advanced.svg', title: 'Advanced', Number: 1, monthlyPrice: '$12/mo', yearlyPrice: '$120/yr', isSelected: plansSelected[1] },
+        { icon: '/assets/images/icon-pro.svg', title: 'Pro', Number: 2, monthlyPrice: '$15/mo', yearlyPrice: '$150/yr', isSelected: plansSelected[2] }
     ];
 
     const [values, setValues] = useState({ selectedPlan: formInfo.planInfo.selectedPlan , isYearly: formInfo.planInfo.isYearly });
