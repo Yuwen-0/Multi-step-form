@@ -18,7 +18,7 @@ const SelectPlan = ({ formInfo, setFormInfo,nextStep, prevStep,contentContainer 
         { icon: './assets/images/icon-pro.svg', title: 'Pro', Number: 2, monthlyPrice: '$15/mo', yearlyPrice: '$150/yr', isSelected: plansSelected[2] }
     ];
 
-    const [values, setValues] = useState({ selectedPlan: formInfo.planInfo.selectedPlan , isYearly: false });
+    const [values, setValues] = useState({ selectedPlan: formInfo.planInfo.selectedPlan , isYearly: formInfo.planInfo.isYearly });
 
     const toggleSwitch = () => {
         setValues(prevValues => ({ ...prevValues, isYearly: !prevValues.isYearly }));
@@ -34,6 +34,7 @@ const SelectPlan = ({ formInfo, setFormInfo,nextStep, prevStep,contentContainer 
                 ...prev,
                 planInfo: {
                     selectedPlan: values.selectedPlan,
+                    price: values.selectedPlan === 'Arcade' ? 9 : values.selectedPlan === 'Advanced' ? 12 : 15,
                     isYearly: values.isYearly
                 }
             }))
@@ -50,6 +51,7 @@ const SelectPlan = ({ formInfo, setFormInfo,nextStep, prevStep,contentContainer 
             ...prev,
             planInfo: {
                 selectedPlan: values.selectedPlan,
+                price: values.selectedPlan === 'Arcade' ? 9 : values.selectedPlan === 'Advanced' ? 12 : 15,
                 isYearly: false
             }
         }))
@@ -98,7 +100,6 @@ const SelectPlan = ({ formInfo, setFormInfo,nextStep, prevStep,contentContainer 
             <div>
                 <button onClick={prevStepClick} className='backButton'>Go Back</button>
                 <button onClick={nextStepClick} className='nextButton'>Next Step</button>
-
             </div>
         </div>
     )

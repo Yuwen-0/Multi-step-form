@@ -22,11 +22,12 @@
     border: 1px solid var(--cool-gray);
     padding: .5em 1em;
     cursor: pointer;
-    transition: all .15s;
+    transition: all .35s;
 }
 
 .addon:hover{
-    border-color: var(--purplish-blue);
+    transition: all .2s;
+    outline:  1px solid var(--purplish-blue);
 }
 
 .addonTitle{
@@ -57,10 +58,22 @@
     border: 1px solid var(--cool-gray);
     border-radius: 15%;
     cursor: pointer;
+    transition: all .35s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .addonPrice{
     color: var(--purplish-blue);
     font-weight: 700;
     margin: 0 0 0 auto;
+}
+
+.addonSelected{
+    border-color: var(--purplish-blue);
+}
+
+.checkboxSelected{
+    background-color: var(--purplish-blue);
 }

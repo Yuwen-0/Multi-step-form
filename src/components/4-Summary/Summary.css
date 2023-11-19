@@ -1,0 +1,74 @@
+.summary{
+    width: 77%;
+    margin: 1em auto;
+    height: 94%;
+    position: relative;
+}
+
+.summaryTitle{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.summaryInfo{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 2em;
+    padding: 1em;
+    background-color: rgba(208, 208, 208, 0.482) !important;
+    height: fit-content;
+    border-radius: 10px;
+}
+
+.summaryPlanInfo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.planChange{
+    color: rgba(128, 128, 128, 0.894);
+    font-weight: 400;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
+.planPrice{
+    color: var(--marine-blue);
+    font-weight: 700;
+}
+
+.addonInfoContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.addonInfoTitle{
+    color: var(--cool-gray);
+    font-weight: 700;
+}
+
+.addonInfoPrice{
+    color: var(--marine-blue);
+}
+
+.summaryTotal{
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+}
+
+.totalTitle{
+    color: var(--cool-gray);
+    font-weight: 700;
+    font-size: 1em;
+}
+
+.totalPrice{
+    color: var(--purplish-blue);
+    font-size: 1.2em;
+    font-weight: 700;
+}

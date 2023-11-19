@@ -9,7 +9,7 @@ import {  useRef, useState } from 'react';
 
 function App() {
 
-  const [activeStep, setActiveStep] = useState(3);
+  const [activeStep, setActiveStep] = useState(5);
   const [formInfo, setFormInfo] = useState({
     personalInfo: {
       name: "",
@@ -18,9 +18,30 @@ function App() {
       country: "",
     },
     planInfo: {
-      selectedPlan: "",
+      selectedPlan: "Arcade",
+      price: 9,
       isYearly: false
-    }
+    },
+    addonsInfo: [
+      {
+        title: "Online service",
+        monthly: 1,
+        yearly: 10,
+        isSelected: false,
+      },
+      {
+        title: "Larger storage",
+        monthly: 2,
+        yearly: 20,
+        isSelected: false,
+      },
+      {
+        title: "Customizable profile",
+        monthly:2,
+        yearly: 20,
+        isSelected: false,
+      }
+    ],
   });
 
 
@@ -44,6 +65,7 @@ function App() {
           setFormInfo={setFormInfo}
           formInfo={formInfo}
           activeStep={activeStep} 
+          setActiveStep={setActiveStep}
           nextStep={nextStep}
           prevStep={prevStep}
           contentContainer={contentContainer}

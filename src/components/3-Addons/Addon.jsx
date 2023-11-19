@@ -1,15 +1,27 @@
 
 import './Addons.css'
 import PropTypes from 'prop-types'
-const Addon = ({ title, price, isSelected,description}) => {
+const Addon = ({ title, price, isSelected,description,setAddonData}) => {
 
     const selectAddon = () => {
-        console.log(title)
+        setAddonData(prev =>{
+            return prev.map(addon => {
+                 if(addon.title === title){
+                    return {
+                        ...addon,
+                        isSelected: !addon.isSelected
+                    }
+                }else{
+                    return addon
+                }
+            })
+        })
     }
 
     return (
         <div className={`addon ${isSelected ? 'addonSelected' : ''}`} onClick={selectAddon}>
             <div className={`addonCheckbox ${isSelected ? 'checkboxSelected' : ''}`} onClick={selectAddon}>
+                <img src="/assets/images/icon-checkmark.svg" alt="" />
             </div>
             <div className="addonInfo">
                 <h1 className='addonTitle'>{title}</h1>
@@ -24,7 +36,8 @@ Addon.propTypes = {
     title: PropTypes.string.isRequired,
     price: PropTypes.string.isRequired,
     isSelected: PropTypes.bool.isRequired,
-    description: PropTypes.string.isRequired
+    description: PropTypes.string.isRequired,
+    setAddonData: PropTypes.func.isRequired
 }
 
 export default Addon

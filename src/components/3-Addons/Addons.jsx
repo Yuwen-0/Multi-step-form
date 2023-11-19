@@ -1,29 +1,65 @@
 import "./Addons.css";
 
 import Addon from './Addon.jsx'
+import { useState } from "react";
+import PropTypes from 'prop-types';
 
-const Addons = () => {
-
-    const AddonData = [
+const Addons = ({contentContainer,formInfo,setFormInfo,prevStep,nextStep}) => {
+    const [AddonData, setAddonData] = useState([ 
+    
         {
             title: 'Online service',
             description: 'Access to multiplayer games',
-            price: '+$1/mo',
-            isSelected: false
+            yearly: 10,
+            monthly: 1,
+            price: formInfo.planInfo.isYearly ? '+$10/yr' : '+$1/mo',
+            isSelected: formInfo.addonsInfo.find((addon)=> addon.title === 'Online service').isSelected
         },
         {
             title: 'Larger storage',
             description: 'Extra 1TB of cloud save',
-            price: '+$2/mo',
-            isSelected: false
+            yearly: 20,
+            monthly: 2,
+            price: formInfo.planInfo.isYearly ? '+$20/yr' : '+$2/mo',
+            isSelected: formInfo.addonsInfo.find((addon)=> addon.title === 'Larger storage').isSelected
         },
         {
             title: 'Customizable profile',
             description: 'Custom theme on your profile',
-            price: '+$2/mo',
-            isSelected: false
+            yearly: 20,
+            monthly: 2,
+            price: formInfo.planInfo.isYearly ? '+$20/yr' : '+$2/mo',
+            isSelected: formInfo.addonsInfo.find((addon)=> addon.title === 'Customizable profile').isSelected
         }
-    ]
+    ])
+    console.log(AddonData);
+
+    const NextStep = () => {
+        setFormInfo(prev => ({
+            ...prev,
+            addonsInfo:[...AddonData],
+        }))
+
+        setTimeout(() => {
+            nextStep()
+            contentContainer.current.classList.remove('fadeOut')
+        }, 300)
+
+        contentContainer.current.classList.add('fadeOut')
+    }
+
+    const GoBack = () => {
+        setFormInfo(prev => ({
+            ...prev,
+            addonsInfo:[...AddonData],
+        }))
+
+        setTimeout(() => {
+            prevStep()
+            contentContainer.current.classList.remove('fadeOut')
+        }, 300)
+        contentContainer.current.classList.add('fadeOut')
+    }
 
     return (
         <div className="addons">
@@ -35,12 +71,25 @@ const Addons = () => {
 
             {
                 AddonData.map((addon, index) => (
-                    <Addon key={index} {...addon} />
+                    <Addon key={index} {...addon} setAddonData={setAddonData} />
                     ))
             }
             </div>
+            <div>
+                <button onClick={GoBack} className='backButton'>Go Back</button>
+                <button onClick={NextStep} className='nextButton'>Next Step</button>
+
+            </div>
         </div>
     )
+}
+
+Addons.propTypes = {
+    contentContainer: PropTypes.object,
+    formInfo: PropTypes.object,
+    setFormInfo: PropTypes.func,
+    prevStep: PropTypes.func,
+    nextStep: PropTypes.func,
 }
 
 export default Addons

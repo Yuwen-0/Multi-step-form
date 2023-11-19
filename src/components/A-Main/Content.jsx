@@ -9,7 +9,7 @@ import End from '../5-End/End.jsx';
 
 
 
-const Content = ({setFormInfo,formInfo ,activeStep,contentContainer ,nextStep,prevStep}) => {
+const Content = ({setFormInfo,formInfo ,setActiveStep,activeStep,contentContainer ,nextStep,prevStep}) => {
     switch(activeStep){
         case 1:
             return <PersonalInfo 
@@ -27,9 +27,23 @@ const Content = ({setFormInfo,formInfo ,activeStep,contentContainer ,nextStep,pr
                     contentContainer={contentContainer} 
                    />
         case 3:
-            return <Addons/>
+            return <Addons
+                    formInfo={formInfo}
+                    nextStep={nextStep}
+                    setFormInfo={setFormInfo}
+                    prevStep={prevStep}
+                    contentContainer={contentContainer}
+                    />
         case 4:
-            return <Summary/>
+            return <Summary
+                    formInfo={formInfo}
+                    nextStep={nextStep}
+                    prevStep={prevStep}
+                    contentContainer={contentContainer}
+                    setFormInfo={setFormInfo}
+                    activeStep={activeStep}
+                    setActiveStep={setActiveStep}
+                    />
         case 5:
             return <End/>
     }
@@ -41,7 +55,8 @@ Content.propTypes = {
     prevStep: PropTypes.func,
     contentContainer: PropTypes.object,
     setFormInfo: PropTypes.func,
-    formInfo: PropTypes.object
+    formInfo: PropTypes.object,
+    setActiveStep: PropTypes.func
 }
 
 export default Content
