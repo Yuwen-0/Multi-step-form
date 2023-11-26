@@ -1,7 +1,11 @@
 import PropTypes from 'prop-types';
 import { useRef } from 'react';
+import ArcadeIcon from '../../../assets/images/icon-arcade.svg';
+import AdvancedIcon from '../../../assets/images/icon-advanced.svg';
+import ProIcon from '../../../assets/images/icon-pro.svg';
 
-const Plan = ({ icon, title, price, setPlansSelected, plansSelected, number, isYearly,setError ,setValues}) => {
+const Plan = ({ title, price, setPlansSelected, plansSelected, number, isYearly,setError ,setValues}) => {
+
   const planRef = useRef(null);
 
   const selectPlan = () => {
@@ -18,11 +22,17 @@ const Plan = ({ icon, title, price, setPlansSelected, plansSelected, number, isY
     }));
   };
 
+  const icon = () => {
+    if(title === 'Arcade') return ArcadeIcon;
+    if(title === 'Advanced') return AdvancedIcon;
+    if(title === 'Pro') return ProIcon;
+  }
+
   const isSelected = plansSelected[number].isSelected;
 
   return (
     <div ref={planRef} className={`plan ${isSelected ? 'planSelected' : ''} ${isYearly ? 'planYearly' : ''}`} onClick={selectPlan}>
-      <img className='icon' src={icon} alt="icon of the plan" />
+      <img className='icon' src={icon()} alt="icon of the plan" />
       <div className="planInfo">
         <h1 className='planTitle'>{title}</h1>
         <p className='price'>{price}</p>
