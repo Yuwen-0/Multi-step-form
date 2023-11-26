@@ -155,8 +155,8 @@ const PersonalInfo = ({nextStep ,contentContainer,setFormInfo,formInfo}) => {
                     </div>
                 </div>
             </div>
-            <div>
-                <button onClick={SaveInfo} className="nextButton">Next Step</button>
+            <div className="buttons">
+                <button onClick={SaveInfo} className="nextButton PI">Next Step</button>
             </div>
         </div>
         </>

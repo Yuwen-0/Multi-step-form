@@ -46,23 +46,31 @@ const SelectPlan = ({ formInfo, setFormInfo,nextStep, prevStep,contentContainer 
         }
     }
 
-    const prevStepClick = () => {
-        setFormInfo(prev => ({
+const prevStepClick = () => {
+    setFormInfo(prev => {
+        const { selectedPlan } = values;
+        const price = selectedPlan === 'Arcade' ? 9 : selectedPlan === 'Advanced' ? 12 : 15;
+        const isYearly = values.isYearly;
+        
+        return {
             ...prev,
             planInfo: {
-                selectedPlan: values.selectedPlan,
-                price: values.selectedPlan === 'Arcade' ? 9 : values.selectedPlan === 'Advanced' ? 12 : 15,
-                isYearly: false
+                selectedPlan,
+                price,
+                isYearly
             }
-        }))
-        setTimeout(() => {
-            contentContainer.current.classList.remove('fadeOut');
-            prevStep();
-        }, 300);
-        contentContainer.current.classList.add('fadeOut');
-    }
+        };
+    });
+    
+    setTimeout(() => {
+        contentContainer.current.classList.remove('fadeOut');
+        prevStep();
+    }, 300);
+    
+    contentContainer.current.classList.add('fadeOut');
+};
 
-    return (
+    return <>
         <div className="selectPlan">
             <div className="selectPlanTitle">
                 <h1 className='title'>Select your plan</h1>
@@ -97,12 +105,12 @@ const SelectPlan = ({ formInfo, setFormInfo,nextStep, prevStep,contentContainer 
                 </div>
                 <div className={`yearly ${values.isYearly ? 'selected' : ''}`} onClick={() => setValues(prevValues => ({ ...prevValues, isYearly: true }))}>Yearly</div>
             </div>
-            <div>
-                <button onClick={prevStepClick} className='backButton'>Go Back</button>
-                <button onClick={nextStepClick} className='nextButton'>Next Step</button>
-            </div>
         </div>
-    )
+        <div className="buttons selectPlanButtons">
+            <button onClick={prevStepClick} className='backButton'>Go Back</button>
+            <button onClick={nextStepClick} className='nextButton'>Next Step</button>
+        </div>
+    </>
 }
 
 SelectPlan.propTypes = {

@@ -39,7 +39,7 @@ const Summary = ({formInfo,setActiveStep,contentContainer,nextStep,prevStep}) =>
         }, 300);
         contentContainer.current.classList.add('fadeOut');
     }
-    return (
+    return <>
         <div className="summary">
             <div className="summaryTitle">
                 <h1 className="title">Finishing up</h1>
@@ -65,12 +65,12 @@ const Summary = ({formInfo,setActiveStep,contentContainer,nextStep,prevStep}) =>
                 <h1 className="totalTitle">Total (per {formInfo.planInfo.isYearly ? 'year' : 'month'})</h1>
                 <p className="totalPrice">{totalPrice}</p>
             </div>
-            <div className="buttonsContainer" >
-                <button onClick={GoBack} className="backButton">Go Back</button>
-                <button onClick={Send} className="nextButton">Confirm</button>
-            </div>
         </div>
-    )
+        <div className="buttons" >
+            <button onClick={GoBack} className="backButton">Go Back</button>
+            <button onClick={Send} className="nextButton Confirm">Confirm</button>
+        </div>
+    </>
 }
 
 Summary.propTypes = {

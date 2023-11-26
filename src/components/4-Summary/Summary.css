@@ -72,3 +72,14 @@
     font-size: 1.2em;
     font-weight: 700;
 }
+.Confirm{
+    background-color: var(--purplish-blue);
+}
+
+@media screen and (max-width: 768px) {
+    .summary{
+        width: 100%;
+        padding: 5px;
+    }
+    
+}

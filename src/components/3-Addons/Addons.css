@@ -77,3 +77,17 @@
 .checkboxSelected{
     background-color: var(--purplish-blue);
 }
+
+@media screen and (max-width: 768px) {
+    .addons{
+        width: 99%;
+        padding: 10px;
+        margin-block: 10px;
+    }
+    .addon{
+        padding-left: 10px;
+    }
+    .addonsList{
+        margin-top: 10px;
+    }
+}

@@ -61,7 +61,7 @@ const Addons = ({contentContainer,formInfo,setFormInfo,prevStep,nextStep}) => {
         contentContainer.current.classList.add('fadeOut')
     }
 
-    return (
+    return <>
         <div className="addons">
             <div className="addonsInfo">
                 <h1 className='title'>Pick add-ons</h1>
@@ -75,13 +75,12 @@ const Addons = ({contentContainer,formInfo,setFormInfo,prevStep,nextStep}) => {
                     ))
             }
             </div>
-            <div>
+        </div>
+        <div className="buttons">
                 <button onClick={GoBack} className='backButton'>Go Back</button>
                 <button onClick={NextStep} className='nextButton'>Next Step</button>
-
-            </div>
         </div>
-    )
+    </>
 }
 
 Addons.propTypes = {

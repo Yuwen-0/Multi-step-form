@@ -116,3 +116,11 @@
       transform: rotate(-360deg);
       border-color: var(--checkmark-color);
   }}
+
+  @media screen and (max-width: 768px) {
+    .End{
+        width: 90%;
+        height: 400px;
+    }
+    
+  }
