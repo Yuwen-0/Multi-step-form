@@ -1,6 +1,7 @@
 
 import './Addons.css'
 import PropTypes from 'prop-types'
+import CheckMark from "../../../assets/images/icon-checkmark.svg"
 const Addon = ({ title, price, isSelected,description,setAddonData}) => {
 
     const selectAddon = () => {
@@ -21,7 +22,7 @@ const Addon = ({ title, price, isSelected,description,setAddonData}) => {
     return (
         <div className={`addon ${isSelected ? 'addonSelected' : ''}`} onClick={selectAddon}>
             <div className={`addonCheckbox ${isSelected ? 'checkboxSelected' : ''}`} onClick={selectAddon}>
-                <img src="/assets/images/icon-checkmark.svg" alt="" />
+                <img src={CheckMark} alt="" />
             </div>
             <div className="addonInfo">
                 <h1 className='addonTitle'>{title}</h1>
